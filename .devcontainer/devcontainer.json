@@ -1,0 +1,54 @@
+{
+  "name": "Project RunPi",
+  "dockerComposeFile": "../docker/docker-compose.yml",
+  "service": "web",
+  "workspaceFolder": "/var/www/projectrunpi",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // PHP
+        "php.validate.executablePath": "/usr/local/bin/php",
+
+        // Editor defaults
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true,
+        "[typescript]":      { "editor.tabSize": 2, "editor.insertSpaces": true },
+        "[typescriptreact]": { "editor.tabSize": 2, "editor.insertSpaces": true },
+        "[javascript]":      { "editor.tabSize": 2, "editor.insertSpaces": true },
+        "[javascriptreact]": { "editor.tabSize": 2, "editor.insertSpaces": true },
+        "[php]":             { "editor.tabSize": 4, "editor.insertSpaces": true },
+        "terminal.integrated.defaultProfile.linux": "bash",
+
+        // Disable inline AI suggestions
+        "editor.inlineSuggest.enabled": false,
+        "github.copilot.enable": { "*": false },
+
+        // CSS — defer to Tailwind (web only)
+        "css.validate": false,
+        "scss.validate": false,
+        "less.validate": false,
+        "anseki.vscode-color": true,
+        "color-highlight.markerType": "dot-before",
+        "color-highlight.matchWords": true,
+
+
+        // Tailwind class detection in clsx/cn helpers
+        "tailwindCSS.experimental.classRegex": [
+          ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+          ["cn\\(([^)]*)\\)",   "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+        ]
+
+      },
+      "extensions": [
+        "bmewburn.vscode-intelephense-client", // PHP IntelliSense
+        "bradlc.vscode-tailwindcss",           // Tailwind CSS IntelliSense
+        "esbenp.prettier-vscode",              // Formatter
+        "dbaeumer.vscode-eslint",              // JS/TS linter
+        "naumovs.color-highlight",             // Color previews
+        "mikestead.dotenv",                    // .env syntax highlighting
+        "humao.rest-client",                   // HTTP testing for your API
+        "dsznajder.es7-react-js-snippets"      // React snippets (rfc)
+      ]
+    }
+  }
+}
