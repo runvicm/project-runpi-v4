@@ -1,21 +1,89 @@
-import { Box, Container, Group } from "@mantine/core";
+import { Box, Burger, Button, Container, Drawer, Group, NavLink, Stack } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { Link } from "react-router";
+
+
+const LINKS = [
+  {
+    label: 'Home',
+    href: '#home',
+  },
+  {
+    label: 'Tech Stack',
+    href: '#tech-stack',
+  },
+  {
+    label: 'Services',
+    href: '#services',
+  },
+  {
+    label: 'About',
+    href: '#about',
+  }
+]
+
 
 export default function NavBar() {
+
+  const [opened, { toggle, close }] = useDisclosure(false);
+  
   return (
     <Container size={1280} h="100%">
       <Group justify="space-between" align="center" h="100%">
         
         <Box fw={700} fz="lg">Project RunPi</Box>
         
-        <Group gap="xl">
-          <a href="#about" style={{ textDecoration: 'none', color: 'inherit' }}>About</a>
-          <a href="#projects" style={{ textDecoration: 'none', color: 'inherit' }}>Projects</a>
-          <a href="#contact" style={{ textDecoration: 'none', color: 'inherit' }}>Contact</a>
+        <Group gap="sm" visibleFrom="sm">
+          {LINKS.map((link, index) => {
+            const path = `/${link.href.toLowerCase()}`;
+            const isActive = location.pathname === path;
+
+            return (
+              <Button
+                component={Link}
+                key={index}
+                to={path}
+                variant={isActive ? 'light' : 'subtle'}
+                color="blue"
+              >
+                {link.label}
+              </Button>
+            );
+          })}
         </Group>
         
-        <Box>Search</Box>
+        <Group>
+          <Box visibleFrom="sm">Search</Box>
+          <Burger 
+            opened={opened} 
+            onClick={toggle} 
+            aria-label="Toggle navigation" 
+            hiddenFrom="sm" 
+          />
+        </Group>
         
       </Group>
+
+      <Drawer
+        opened={opened}
+        onClose={close}
+        title="Menu"
+        position="left"
+        size="xs"
+        padding="md"
+      >
+        <Stack gap="xs">
+          {LINKS.map((link, index) => (
+            <NavLink
+              component={Link}
+              key={index}
+              label={link.label}
+              to={link.href}
+              onClick={close} />
+          ))}
+        </Stack>
+      </Drawer>
+
     </Container>
   )
 }

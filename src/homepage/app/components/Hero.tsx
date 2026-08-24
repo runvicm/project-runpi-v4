@@ -42,7 +42,7 @@ export default function Hero() {
             Building real, working web apps with React Router (remix) and Laravel, tailored to what you actually need. Hit me up.
           </Text>
 
-        <Box style={{ width: '50%', marginTop: '1rem', overflow: 'hidden' }}>
+        <Box w={{ base: '100%', xs: '100%', md: '50%' }} style={{ marginTop: '1rem', overflow: 'hidden' }} >
           <Text size="sm" c="dimmed" mb="sm">Proof of concept? This site runs on it.</Text>
           <Marquee pauseOnHover duration={13000} gap="xl" fadeEdges={false} repeat={10}>
             <a href="/tech-stacks" style={{ textDecoration: 'none' }}>
