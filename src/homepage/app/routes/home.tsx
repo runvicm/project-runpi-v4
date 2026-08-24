@@ -1,7 +1,7 @@
-import { env } from "cloudflare:workers";
 
+
+import Hero from "~/components/Hero";
 import type { Route } from "./+types/home";
-import { Hero } from "./hero";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -10,10 +10,11 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export function loader() {
-  return { message: env.VALUE_FROM_CLOUDFLARE };
-}
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
