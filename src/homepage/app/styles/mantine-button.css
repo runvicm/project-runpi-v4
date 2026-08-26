@@ -1,0 +1,53 @@
+
+
+/* Primary Button */
+.mantine-Button-root[data-variant="primary"] {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.mantine-Button-root[data-variant="primary"]:hover {
+  background-color: var(--color-ink);
+  border-color: var(--color-ink);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.2), 0 6px 10px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  transition: all 0.1s ease;
+}
+
+
+.mantine-Button-root[data-variant='secondary'] {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.mantine-Button-root[data-variant='secondary']:hover {
+  background-color: var(--color-ink);
+  color: #fff;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.2), 0 6px 10px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+  transition: all 0.1s ease;
+}
+
+
+
+
+/* Header Navigation */
+.mantine-Button-root[data-variant="activeNav"] {
+  background-color: transparent;
+  color: var(--color-primary); 
+  border-bottom: 2px solid var(--color-primary);
+  border-radius: 0;
+}
+
+.mantine-Button-root[data-variant="defaultNav"] {
+  background-color: transparent;
+  color: #333333;
+  border-bottom: 2px solid transparent; /* Prevents layout shifting when it becomes active */
+  border-radius: 0;
+}
+
+.mantine-Button-root[data-variant="defaultNav"]:hover {
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+}

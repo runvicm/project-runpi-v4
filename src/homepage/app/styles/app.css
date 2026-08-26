@@ -1,0 +1,46 @@
+@import "tailwindcss" source(".");
+
+
+
+/* Manintine styling */
+@import './mantine-button.css';
+@import './mantine-paper.css';
+
+
+
+
+@theme {
+  --color-bg: #f8f8f8;
+  --color-bg2: #f0fdfa;
+  --color-bg3: oklch(0.953 0.051 180.801);
+  --color-ink: oklch(0.6 0.118 184.704);
+  --color-primary: oklch(0.511 0.096 186.391);
+  /* --color-btnGoldStart: #4a3a18;
+  --color-btnGoldEnd: #6a5228;
+  --color-goldLt: #e8c97a;
+  --color-goldBd: #7a5e28; */
+  --test: 
+
+}
+
+
+/* 
+  This control the global style
+  Manitne deafult is light
+*/
+
+:root[data-mantine-color-scheme='light'] {
+  --mantine-color-body: var(--color-bg); 
+  --mantine-color-text: var(--color-ink);
+  /* --mantine-font-family: 'Noto Sans JP', sans-serif; */
+
+}
+
+:root[data-mantine-color-scheme='dark'] {
+  --mantine-color-body: red; 
+  --mantine-color-text: var(--color-text);
+
+}
+
+
+

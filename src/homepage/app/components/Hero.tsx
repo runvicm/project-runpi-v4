@@ -1,9 +1,45 @@
-import { Box, Button, Container, Group, Marquee, Stack, Text, Title } from '@mantine/core'
+import { Box, Button, Container, Group, Marquee, Paper, Stack, Text, Title } from '@mantine/core'
 import { heroStyles } from '~/themes'
+import { IconBrandGithub, IconBrandUpwork } from '@tabler/icons-react';
+
+
+const STACKS = [
+  {
+    label:  "Laravel",
+    icon:   "https://cdn.simpleicons.org/laravel/FF2D20",
+    href:   "#",
+  },
+  {
+    label:  "React Router 8",
+    icon:   "https://cdn.simpleicons.org/reactrouter/CA4245",
+    href:   "#",
+  },
+  {
+    label:  "Typescript",
+    icon:   "https://cdn.simpleicons.org/typescript/3178C6",
+    href:   "#",
+  },
+  {
+    label:  "Mantine",
+    icon:   "https://cdn.simpleicons.org/mantine/339AF0",
+    href:   "#",
+  },
+  {
+    label:  "Cloudflare Tunnel, Worker & Pages",
+    icon:   "https://cdn.simpleicons.org/cloudflare/F38020",
+    href:   "#",
+  },
+  {
+    label:  "Nginx Proxy",
+    icon:   "https://cdn.simpleicons.org/nginx/009639",
+    href:   "#",
+  },
+]
+
 
 export default function Hero() {
   return (
-    <Box py={100} className={heroStyles.section}>
+    <Paper py={100} variant='hero'>
       <Container size={1280} >
         <Stack align="flex-start" gap="lg">
           
@@ -38,66 +74,45 @@ export default function Hero() {
 
 
           {/* Subtitle description */}
-          <Text size="xl" c="dimmed" maw={600} style={{ lineHeight: 1.6 }}>
+          <Text size="xl" maw={600} style={{ lineHeight: 1.6 }}>
             Building real, working web apps with React Router (remix) and Laravel, tailored to what you actually need. Hit me up.
           </Text>
 
-        <Box w={{ base: '100%', xs: '100%', md: '50%' }} style={{ marginTop: '1rem', overflow: 'hidden' }} >
-          <Text size="sm" c="dimmed" mb="sm">Proof of concept? This site runs on it.</Text>
-          <Marquee pauseOnHover duration={13000} gap="xl" fadeEdges={false} repeat={10}>
-            <a href="/tech-stacks" style={{ textDecoration: 'none' }}>
-              <Group gap="xs" style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <img src="https://cdn.simpleicons.org/laravel/FF2D20" alt="Laravel" width="24" height="24" />
-                <Text size="sm" fw={600} c="dark">Laravel</Text>
-              </Group>
-            </a>
-            <a href="/tech-stacks" style={{ textDecoration: 'none' }}>
-              <Group gap="xs" style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <img src="https://cdn.simpleicons.org/reactrouter/CA4245" alt="React Router" width="24" height="24" />
-                <Text size="sm" fw={600} c="dark">React Router 7</Text>
-              </Group>
-            </a>
-            <a href="/tech-stacks" style={{ textDecoration: 'none' }}>
-              <Group gap="xs" style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <img src="https://cdn.simpleicons.org/typescript/3178C6" alt="TypeScript" width="24" height="24" />
-                <Text size="sm" fw={600} c="dark">TypeScript</Text>
-              </Group>
-            </a>
-            <a href="/tech-stacks" style={{ textDecoration: 'none' }}>
-              <Group gap="xs" style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <img src="https://cdn.simpleicons.org/mantine/339AF0" alt="Mantine" width="24" height="24" />
-                <Text size="sm" fw={600} c="dark">Mantine UI</Text>
-              </Group>
-            </a>
-            <a href="/tech-stacks" style={{ textDecoration: 'none' }}>
-              <Group gap="xs" style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare" width="24" height="24" />
-                <Text size="sm" fw={600} c="dark">Cloudflare Workers</Text>
-              </Group>
-            </a>
-            <a href="/tech-stacks" style={{ textDecoration: 'none' }}>
-              <Group gap="xs" style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <img src="https://cdn.simpleicons.org/nginx/009639" alt="Nginx" width="24" height="24" />
-                <Text size="sm" fw={600} >Nginx & Tunnel</Text>
-              </Group>
-            </a>
-          </Marquee>
-        </Box>
+          <Box w={{ base: '100%', xs: '100%', md: '60%' }} style={{ marginTop: '1rem', overflow: 'hidden' }} >
+            <Text size="sm" c="dimmed" mb="sm">Proof of concept? This site runs on it.</Text>
+            <Marquee pauseOnHover duration={13000} gap="xl" fadeEdges={false} repeat={10}>
+              {STACKS.map((stack, index) => (
+                <a key={index} href={stack.href} style={{ textDecoration: 'none' }}>
+                  <Group gap="xs" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                    <img src={stack.icon} alt="Laravel" width="24" height="24" />
+                    <Text size="sm" fw={600}>{stack.label}</Text>
+                  </Group>
+                </a>
+              ))}
+            </Marquee>
+          </Box>
 
 
           {/* Action buttons */}
-          <Group gap="md" mt="sm">
+          <Group>
             <Button 
+              variant="primary"
               size="lg" 
               radius="md"
-              variant='filled' 
+              leftSection={<IconBrandUpwork />}
+              component="a"
+              href="https://www.upwork.com/freelancers/~0100c0f1552b67ba88" 
             >
               Upwork
             </Button>
-            
+
             <Button 
+              variant='secondary'
               size="lg" 
-              radius="md" 
+              radius="md"
+              leftSection={<IconBrandGithub />}  
+              component="a"
+              href="https://github.com/runvicm"
             >
               Repository
             </Button>
@@ -105,6 +120,6 @@ export default function Hero() {
 
         </Stack>
       </Container>
-    </Box>
+    </Paper>
   )
 }

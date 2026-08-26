@@ -1,5 +1,3 @@
-import '@mantine/core/styles.css';
-
 import {
   isRouteErrorResponse,
   Links,
@@ -10,7 +8,8 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import "./app.css";
+import '@mantine/core/styles.css';    // manitne css after the main css
+import "./styles/app.css";
 import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
 
 export const links: Route.LinksFunction = () => [

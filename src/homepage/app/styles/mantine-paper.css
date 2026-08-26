@@ -1,0 +1,20 @@
+/* 
+  This module will be use as section
+*/
+
+/* Hero Section */
+.mantine-Paper-root[data-variant="hero"] {
+  background-color: var(--color-bg3);
+  color: var(--color-primary);
+}
+
+/* Project Section */
+.mantine-Paper-root[data-variant="project"] {
+  background-color: #f0fdfa;
+  color: var(--color-primary);
+}
+
+.mantine-Paper-root[data-variant="devlog"] {
+  background-color: var(--color-bg3);
+  color: var(--color-primary);
+}

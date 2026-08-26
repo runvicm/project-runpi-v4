@@ -10,9 +10,9 @@ export default function Layout() {
     >
       <AppShell.Header
         style={{ 
-        backgroundColor: 'rgba(255, 255, 255, 0.75)', 
-        backdropFilter: 'blur(10px)',             
-        borderBottom: '1px solid rgba(229, 231, 235, 1)',                     
+        backgroundColor: 'rgba(255, 255, 255, 0)', 
+        backdropFilter: 'blur(5px)',             
+        borderBottom: '3px solid rgba(229, 231, 235, 1)',                     
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
         }}
       >
