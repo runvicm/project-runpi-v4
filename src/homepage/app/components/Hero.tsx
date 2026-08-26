@@ -1,4 +1,4 @@
-import { Box, Button, Container, Group, Marquee, Paper, Stack, Text, Title } from '@mantine/core'
+import { Box, Button, Container, Flex, Grid, Group, Image, Marquee, Paper, Stack, Text, Title } from '@mantine/core'
 import { heroStyles } from '~/themes'
 import { IconBrandGithub, IconBrandUpwork } from '@tabler/icons-react';
 
@@ -41,6 +41,22 @@ export default function Hero() {
   return (
     <Paper py={100} variant='hero'>
       <Container size={1280} >
+
+
+
+        <Grid>
+          <Grid.Col span={{ base: 12, md: 6, lg: 7 }}>
+
+
+
+
+
+
+
+     
+
+
+
         <Stack align="flex-start" gap="lg">
           
           {/* Subtle status badge */}
@@ -78,7 +94,7 @@ export default function Hero() {
             Building real, working web apps with React Router (remix) and Laravel, tailored to what you actually need. Hit me up.
           </Text>
 
-          <Box w={{ base: '100%', xs: '100%', md: '60%' }} style={{ marginTop: '1rem', overflow: 'hidden' }} >
+          <Box w={{ base: '100%', xs: '100%', md: '80%' }} style={{ marginTop: '1rem', overflow: 'hidden' }} >
             <Text size="sm" c="dimmed" mb="sm">Proof of concept? This site runs on it.</Text>
             <Marquee pauseOnHover duration={13000} gap="xl" fadeEdges={false} repeat={10}>
               {STACKS.map((stack, index) => (
@@ -119,6 +135,29 @@ export default function Hero() {
           </Group>
 
         </Stack>
+
+          </Grid.Col>
+
+
+ <Grid.Col span={{ base: 12, md: 6, lg: 5 }}>
+
+    
+
+            <Image
+                src="./hero-illu.svg"
+                // height={160}
+                alt="Project preview"
+                // style={{ border: '1px solid #e9ecef' }}
+              />
+
+        
+ </Grid.Col>
+
+
+
+   </Grid>
+
+
       </Container>
     </Paper>
   )
