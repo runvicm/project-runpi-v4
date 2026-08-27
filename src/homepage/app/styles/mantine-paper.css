@@ -1,5 +1,5 @@
 /* 
-  This module will be use as section
+  This module will be use as section for changing color only
 */
 
 /* Hero Section */
@@ -14,7 +14,17 @@
   color: var(--color-primary);
 }
 
-.mantine-Paper-root[data-variant="devlog"] {
+
+/* Services Section */
+.mantine-Paper-root[data-variant="services"] {
+  /* background-color: #f0fdfa; */
+  color: var(--color-primary);
+}
+
+
+
+/* Devlog Section */
+.mantine-Paper-root[data-variant="devlog"]: {
   background-color: var(--color-bg3);
   color: var(--color-primary);
 }

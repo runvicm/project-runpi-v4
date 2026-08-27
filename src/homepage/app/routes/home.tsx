@@ -4,6 +4,7 @@ import Hero from "~/components/Hero";
 import type { Route } from "./+types/home";
 import Project from "~/components/Project";
 import Devlog from "~/components/Devlog";
+import Services from "~/components/Services";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -18,6 +19,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     <>
       <Hero />
       <Project />
+      <Services />
       <Devlog />
     </>
   );
