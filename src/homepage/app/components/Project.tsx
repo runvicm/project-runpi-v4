@@ -185,7 +185,7 @@ export default function Project() {
                   flex={1} 
                   rightSection={<IconExternalLink size={16} />}
                 >
-                  View Project
+                   View Project
                 </Button>
                 
                 <ActionIcon 

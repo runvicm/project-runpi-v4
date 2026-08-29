@@ -96,7 +96,7 @@ export default function Hero() {
                 Building real, working web apps with React Router (remix) and Laravel, tailored to what you actually need. Hit me up.
               </Text>
 
-              <Box style={{ marginTop: '1rem', overflow: 'hidden' }} >
+              <Box w={{ base: '100%', xs: '100%', md: '80%' }} style={{ marginTop: '1rem', overflow: 'hidden' }} >
                 <Text size="sm" c="dimmed" mb="sm" span><IconServerSpark />Powered by this exact stack.</Text>
 
                 <Marquee pauseOnHover repeat={2} duration={10000} gap="xl" fadeEdges={false} maw={600}>

@@ -1,26 +1,9 @@
-import { Box, Burger, Button, Container, Drawer, Group, NavLink, Stack } from "@mantine/core";
+import { ActionIcon, Box, Burger, Button, Container, Drawer, Group, NavLink, Stack, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { IconArrowRight, IconSearch } from "@tabler/icons-react";
 import { Link, useLocation } from "react-router";
-
-
-const LINKS = [
-  {
-    label: 'Home',
-    href: '/',
-  },
-  {
-    label: 'Tech Stack',
-    href: 'tech-stack',
-  },
-  {
-    label: 'Services',
-    href: 'services',
-  },
-  {
-    label: 'About',
-    href: 'about',
-  }
-]
+import { NAV_LINKS, SITE_CONFIG } from "~/constants";
+import SearchBar from "./SearchBar";
 
 
 export default function NavBar() {
@@ -28,26 +11,24 @@ export default function NavBar() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const location = useLocation();
 
-  console.log(location)
   
   return (
     <Container size={1280} h="100%">
       <Group justify="space-between" align="center" h="100%">
         
-        <Box fw={700} fz="lg">Project RunPi</Box>
+        <Box fw={700} fz="lg">{SITE_CONFIG.title}</Box>
         
         <Group gap="xs" visibleFrom="sm">
-          {LINKS.map((link, index) => {
+          {NAV_LINKS.map((link, index) => {
             const path = `${link.href.toLowerCase()}`;
             const isActive = location.pathname === path;
             
             return (
               <Button
-                component={Link}
+                component={Link}    // use react router hooks
                 key={index}
                 to={path}
                 variant={isActive ? 'activeNav' : 'defaultNav'}
-                color="#1f2937"
               >
                 {link.label}
               </Button>
@@ -56,7 +37,9 @@ export default function NavBar() {
         </Group>
         
         <Group>
-          <Box visibleFrom="sm">Search</Box>
+          <Box visibleFrom="sm">
+            <SearchBar />
+          </Box>
 
           {/* Burger Menu for mobile */}
           <Burger 
@@ -69,7 +52,6 @@ export default function NavBar() {
         
       </Group>
 
-
       {/* Drawer Menu for Mobile */}
       <Drawer
         opened={opened}
@@ -80,7 +62,7 @@ export default function NavBar() {
         padding="md"
       >
         <Stack gap="xs">
-          {LINKS.map((link, index) => (
+          {NAV_LINKS.map((link, index) => (
             <NavLink
               component={Link}
               key={index}

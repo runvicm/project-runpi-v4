@@ -8,7 +8,7 @@ import Services from "~/components/Services";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "Project RunPi" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }

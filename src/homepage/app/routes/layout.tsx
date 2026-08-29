@@ -1,5 +1,6 @@
 import { AppShell, Box, Container, Group } from '@mantine/core'
 import { Outlet } from 'react-router'
+import Footer from '~/components/Footer'
 import NavBar from '~/components/NavBar'
 
 
@@ -25,8 +26,7 @@ export default function Layout() {
         </Box>
 
         <Box component="footer" bg="dark.8" py={80} px="xl">
-          <h2>Let's work together.</h2>
-          {/* Add all your massive grid links here */}
+          <Footer />
         </Box>
       </AppShell.Main>
       

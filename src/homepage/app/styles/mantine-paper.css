@@ -10,21 +10,21 @@
 
 /* Project Section */
 .mantine-Paper-root[data-variant="project"] {
-  background-color: #f0fdfa;
+  background-color: var(--color-bg2);
   color: var(--color-primary);
 }
 
 
 /* Services Section */
 .mantine-Paper-root[data-variant="services"] {
-  /* background-color: #f0fdfa; */
+  background-color: var(--color-bg);
   color: var(--color-primary);
 }
 
 
 
 /* Devlog Section */
-.mantine-Paper-root[data-variant="devlog"]: {
-  background-color: var(--color-bg3);
+.mantine-Paper-root[data-variant="devlog"] {
+  background-color: var(--color-bg2);
   color: var(--color-primary);
 }
