@@ -1,7 +1,13 @@
 import { AppShell, Box, Container, Group } from '@mantine/core'
+import { env } from 'cloudflare:workers';
 import { Outlet } from 'react-router'
 import Footer from '~/components/Footer'
 import NavBar from '~/components/NavBar'
+
+
+export function loader() {
+  return { key: env.WEB3FORMS_KEY };
+}
 
 
 export default function Layout() {

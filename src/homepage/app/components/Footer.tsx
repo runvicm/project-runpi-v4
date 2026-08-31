@@ -2,6 +2,7 @@ import { ActionIcon, Anchor, Button, Container, Divider, Grid, Group, Paper, Sta
 import { IconBrandFacebook, IconBrandLinkedin, IconBrandMedium, IconBrandUpwork } from "@tabler/icons-react";
 import { NavLink } from "react-router";
 import { NAV_LINKS, SITE_CONFIG, SOCIAL_LINKS } from "~/constants";
+import ContactForm from "./blocks/ContactForm";
 
 export default function Footer() {
   return (
@@ -53,29 +54,7 @@ export default function Footer() {
             <Title order={4} c="teal.5" mb="md" fw={600}>
               Get in Touch
             </Title>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <Stack gap="md">
-                <TextInput 
-                  placeholder="Your name" 
-                  radius="md" 
-                  styles={{ input: { backgroundColor: '#1e293b', border: 'none', color: 'white' } }}
-                />
-                <TextInput 
-                  placeholder="Your email" 
-                  radius="md" 
-                  styles={{ input: { backgroundColor: '#1e293b', border: 'none', color: 'white' } }}
-                />
-                <Textarea 
-                  placeholder="Your message..." 
-                  radius="md" 
-                  minRows={3}
-                  styles={{ input: { backgroundColor: '#1e293b', border: 'none', color: 'white' } }}
-                />
-                <Button color="teal.6" radius="md" fullWidth>
-                  Send Message
-                </Button>
-              </Stack>
-            </form>
+            <ContactForm />
           </Grid.Col>
           
         </Grid>
