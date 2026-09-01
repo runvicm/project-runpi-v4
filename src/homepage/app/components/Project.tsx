@@ -10,30 +10,30 @@ const PROJECTS = [
     title: 'Developer Log',
     status: 'developement',
     description: 'thisasd asd asda sd asd ads asd asdas asd asd asd asd asda da dasd er asdf sdf sdfaswea dasewe asdasd asd asd asd asd asda sas dasd asd',
-    stacks: ['React', 'Laravel', 'Mantine'],
+    stacks: ['Laravel', 'React Router', 'Mantine'],
     url: 'https://devlog.yourdomain.com',
     repoUrl: 'https://github.com/yourhandle/devlog'
   },
-  {
-    hostname: 'minecraft',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Development Log',
-    status: 'live',
-    description: 'thisasd asd asda sd asd ads asd   ',
-    stacks: ['React', 'Laravel', 'Mantine'],
-    url: 'https://devlog.yourdomain.com',
-    repoUrl: 'https://github.com/yourhandle/devlog'
-  },
-  {
-    hostname: 'events',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Development Log',
-    status: 'live',
-    description: 'thisasd asd asda sd asd ads asd asdas asdf dfg sfdg dsasda da sd asd',
-    stacks: ['React', 'Laravel', 'Mantine'],
-    url: 'https://devlog.yourdomain.com',
-    repoUrl: 'https://github.com/yourhandle/devlog'
-  }
+  // {
+  //   hostname: 'minecraft',
+  //   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  //   title: 'Development Log',
+  //   status: 'live',
+  //   description: 'thisasd asd asda sd asd ads asd   ',
+  //   stacks: ['React', 'Laravel', 'Mantine'],
+  //   url: 'https://devlog.yourdomain.com',
+  //   repoUrl: 'https://github.com/yourhandle/devlog'
+  // },
+  // {
+  //   hostname: 'events',
+  //   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  //   title: 'Development Log',
+  //   status: 'live',
+  //   description: 'thisasd asd asda sd asd ads asd asdas asdf dfg sfdg dsasda da sd asd',
+  //   stacks: ['React', 'Laravel', 'Mantine'],
+  //   url: 'https://devlog.yourdomain.com',
+  //   repoUrl: 'https://github.com/yourhandle/devlog'
+  // }
 ];
 
 
@@ -173,9 +173,9 @@ export default function Project() {
 
               {/* Tech Stack Tags */}
               <Group gap="xs" mb="md" mt="auto">
-                <Badge size="xs" variant="outline" color="gray" radius="sm">React</Badge>
-                <Badge size="xs" variant="outline" color="gray" radius="sm">Laravel</Badge>
-                <Badge size="xs" variant="outline" color="gray" radius="sm">Mantine</Badge>
+                {project.stacks.map((stack, index) => (
+                  <Badge key={index} size="xs" variant="outline" color="gray" radius="sm">{stack}</Badge>
+                ))}
               </Group>
             
               {/* Footer Actions */}

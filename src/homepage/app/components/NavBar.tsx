@@ -11,7 +11,6 @@ export default function NavBar() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const location = useLocation();
 
-  
   return (
     <Container size={1280} h="100%">
       <Group justify="space-between" align="center" h="100%">

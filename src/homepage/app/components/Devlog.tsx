@@ -2,7 +2,6 @@ import { Anchor, Badge, Box, Card, Container, Flex, Group, Paper, SimpleGrid, Te
 import { IconArrowRight, IconCalendarEvent, IconEye } from '@tabler/icons-react';
 
 
-
 const devlogs = [
   {
     id: 1,

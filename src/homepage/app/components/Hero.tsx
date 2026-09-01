@@ -1,5 +1,6 @@
 import { Box, Button, Container, Flex, Grid, Group, Image, Marquee, Paper, Stack, Text, Title } from '@mantine/core'
 import { IconBrandGithub, IconBrandUpwork, IconCode, IconCodeAi, IconCodeAsterix, IconCodeDots, IconServerSpark } from '@tabler/icons-react';
+import { SITE_CONFIG } from '~/constants';
 
 
 const STACKS = [
@@ -93,7 +94,7 @@ export default function Hero() {
 
               {/* Subtitle description */}
               <Text size="xl" maw={600} style={{ lineHeight: 1.6 }}>
-                Building real, working web apps with React Router (remix) and Laravel, tailored to what you actually need. Hit me up.
+                {SITE_CONFIG.description}
               </Text>
 
               <Box w={{ base: '100%', xs: '100%', md: '80%' }} style={{ marginTop: '1rem', overflow: 'hidden' }} >
