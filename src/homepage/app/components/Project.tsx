@@ -1,42 +1,6 @@
-import { ActionIcon, Badge, Box, Button, Card, Container, Flex, Group, Image, Paper, SimpleGrid, Stack, Text, Title } from '@mantine/core'
+import { ActionIcon, Badge, Box, Button, Card, Container, Flex, Group, Image, Paper, Stack, Text, Title } from '@mantine/core'
 import { IconBrandGithub, IconExternalLink, IconLock } from '@tabler/icons-react'
-import React from 'react'
-
-
-const PROJECTS = [
-  {
-    hostname: 'devlog',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Developer Log',
-    status: 'developement',
-    description: 'thisasd asd asda sd asd ads asd asdas asd asd asd asd asda da dasd er asdf sdf sdfaswea dasewe asdasd asd asd asd asd asda sas dasd asd',
-    stacks: ['Laravel', 'React Router', 'Mantine'],
-    url: 'https://devlog.yourdomain.com',
-    repoUrl: 'https://github.com/yourhandle/devlog'
-  },
-  // {
-  //   hostname: 'minecraft',
-  //   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  //   title: 'Development Log',
-  //   status: 'live',
-  //   description: 'thisasd asd asda sd asd ads asd   ',
-  //   stacks: ['React', 'Laravel', 'Mantine'],
-  //   url: 'https://devlog.yourdomain.com',
-  //   repoUrl: 'https://github.com/yourhandle/devlog'
-  // },
-  // {
-  //   hostname: 'events',
-  //   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  //   title: 'Development Log',
-  //   status: 'live',
-  //   description: 'thisasd asd asda sd asd ads asd asdas asdf dfg sfdg dsasda da sd asd',
-  //   stacks: ['React', 'Laravel', 'Mantine'],
-  //   url: 'https://devlog.yourdomain.com',
-  //   repoUrl: 'https://github.com/yourhandle/devlog'
-  // }
-];
-
-
+import { PROJECTS } from '~/constants'
 
 
 export default function Project() {
@@ -103,7 +67,6 @@ export default function Project() {
 
           </Stack>
         </Box>
-
 
 
         {/* Cards */}

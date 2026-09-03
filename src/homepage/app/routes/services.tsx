@@ -1,5 +1,7 @@
 import { Container, Title, Text, Grid, Paper, Button, List, ThemeIcon, Badge, Divider, Box, Group } from '@mantine/core';
 import { IconCheck, IconX, IconExternalLink } from '@tabler/icons-react';
+import { OG_DESCRIPTION, SITE_CONFIG } from '~/constants';
+import { createMeta } from '~/utils/seo';
 
 const tiers = [
   {
@@ -18,8 +20,17 @@ const tiers = [
     ],
     notIncluded: ['Design — client provides Figma or reference']
   },
-  // You can paste your Standard and Professional tier objects here following the same structure
 ];
+
+
+export function meta() {
+  return createMeta({
+    title: `${SITE_CONFIG.title} - Services`,
+    description: `${OG_DESCRIPTION}`,
+    type: "website"
+  });
+}
+
 
 export default function ServicesPage() {
   return (

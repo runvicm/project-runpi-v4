@@ -1,5 +1,15 @@
 import { Container, Title, Text, Grid, Box, Group, ThemeIcon, Stack } from '@mantine/core';
 import { IconRocket, IconCode, IconTrendingUp, IconBell, IconTarget, IconBulb } from '@tabler/icons-react';
+import { OG_DESCRIPTION, SITE_CONFIG } from '~/constants';
+import { createMeta } from '~/utils/seo';
+
+export function meta() {
+  return createMeta({
+    title: `${SITE_CONFIG.title} - Abaout`,
+    description: `${OG_DESCRIPTION}`,
+    type: "website"
+  });
+}
 
 export default function AboutPage() {
   return (
@@ -74,7 +84,14 @@ interface FeatureItemProps {
   desc: string;
 }
 
-// Reusable micro-component for the icon lists
+/**
+ * TO DO: will move this later as component
+ * 
+ * @param icon Tabler Icon
+ * @param title Title
+ * @param desc Description
+ * @returns 
+ */
 function FeatureItem({ icon: Icon, title, desc }: FeatureItemProps) {
   return (
     <Group wrap="nowrap" align="flex-start">

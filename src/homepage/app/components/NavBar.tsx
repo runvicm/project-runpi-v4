@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Burger, Button, Container, Drawer, Group, NavLink, Stack, TextInput } from "@mantine/core";
+import { ActionIcon, Box, Burger, Button, Container, Drawer, Flex, Group, Image, NavLink, Stack, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconArrowRight, IconSearch } from "@tabler/icons-react";
 import { Link, useLocation } from "react-router";
@@ -15,7 +15,10 @@ export default function NavBar() {
     <Container size={1280} h="100%">
       <Group justify="space-between" align="center" h="100%">
         
-        <Box fw={700} fz="lg">{SITE_CONFIG.title}</Box>
+        <Flex align="center" gap="sm">
+          <Image src="/pr-logo.svg" alt="Logo" w={40} h={40} />
+          <Box fw={700} fz="lg">{SITE_CONFIG.title}</Box>
+        </Flex>
         
         <Group gap="xs" visibleFrom="sm">
           {NAV_LINKS.map((link, index) => {

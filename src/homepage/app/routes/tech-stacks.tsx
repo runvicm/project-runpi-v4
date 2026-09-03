@@ -1,72 +1,20 @@
 import { Box, Text, Group, Badge, Anchor, Divider, Stack, Title, ThemeIcon, Paper } from '@mantine/core';
 import { 
-  IconExternalLink, 
-  IconBrandVscode, 
-  IconBrandDocker, 
-  IconBrandGithub,
-  IconGitPullRequest, // Fallback for Gitea/Git
-  IconBrandReact,
-  IconBrandTypescript,
-  IconBrandTailwind
+  IconExternalLink,
 } from '@tabler/icons-react';
+import { OG_DESCRIPTION, SITE_CONFIG, TECH_DATA } from '~/constants';
+import { createMeta } from '~/utils/seo';
 
-const techData = [
-  {
-    category: 'Development Environment',
-    items: [
-      {
-        id: 'vscode',
-        name: 'VSCode',
-        icon: IconBrandVscode,
-        color: 'blue', // Match the brand color!
-        description: 'My daily driver for coding. Quick and works great with everything.',
-        status: 'Active',
-        docs: 'https://code.visualstudio.com/docs'
-      },
-      {
-        id: 'docker',
-        name: 'Docker Windows',
-        icon: IconBrandDocker,
-        color: 'cyan',
-        description: 'Same Docker setup as production, just on Windows. Keeps dev and prod identical and my system clean.',
-        status: 'Active',
-        docs: 'https://docs.docker.com/'
-      },
-      {
-        id: 'gitea',
-        name: 'Gitea',
-        icon: IconGitPullRequest,
-        color: 'green',
-        description: 'Self-hosted Git server I ran on my Pi. Moved back to GitHub to keep things simpler.',
-        status: 'Used',
-        docs: 'https://docs.gitea.com/'
-      }
-    ]
-  },
-  {
-    category: 'Frontend',
-    items: [
-      {
-        id: 'react',
-        name: 'React',
-        icon: IconBrandReact,
-        color: 'cyan',
-        description: 'What I use for front-end work. Still learning, but it’s powering my current projects.',
-        status: 'Active',
-        docs: 'https://react.dev/'
-      },
-      {
-        id: 'typescript',
-        name: 'Typescript',
-        icon: IconBrandTypescript,
-        color: 'blue',
-        description: 'Catches bugs before runtime. Still learning it, but already writing more reliable code.',
-        status: 'Active',
-        docs: 'https://www.typescriptlang.org/docs/'
-      }
-    ]
-  } 
-];
+
+
+export function meta() {
+  return createMeta({
+    title: `${SITE_CONFIG.title} - Homepage`,
+    description: `${OG_DESCRIPTION}`,
+    type: "website"
+  });
+}
+
 
 export default function TechStackRedesign() {
   return (
@@ -74,7 +22,7 @@ export default function TechStackRedesign() {
 
   
     <Box maw={800} mx="auto" py={60} px="lg">
-      {techData.map((section, sectionIndex) => (
+      {TECH_DATA.map((section, sectionIndex) => (
         <Box key={section.category} mb={60}>
           <Title order={2} size="h3" c="teal.7" mb="xl" fw={700}>
             {section.category}

@@ -1,18 +1,17 @@
-
-
 import Hero from "~/components/Hero";
-import type { Route } from "./+types/home";
 import Project from "~/components/Project";
 import Devlog from "~/components/Devlog";
 import Services from "~/components/Services";
+import { createMeta } from "~/utils/seo";
+import { OG_DESCRIPTION, SITE_CONFIG } from "~/constants";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Project RunPi" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
+export function meta() {
+  return createMeta({
+    title: `${SITE_CONFIG.title} - Homepage`,
+    description: `${OG_DESCRIPTION}`,
+    type: "website"
+  });
 }
-
 
 export default function Home() {
   return (

@@ -9,7 +9,7 @@ export function loader() {
   return { key: env.WEB3FORMS_KEY };
 }
 
-
+// Main Layout
 export default function Layout() {
   return (
     <AppShell
