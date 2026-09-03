@@ -2,7 +2,8 @@ import { Box, Text, Group, Badge, Anchor, Divider, Stack, Title, ThemeIcon, Pape
 import { 
   IconExternalLink,
 } from '@tabler/icons-react';
-import { OG_DESCRIPTION, SITE_CONFIG, TECH_DATA } from '~/constants';
+import { OG_DESCRIPTION, SITE_CONFIG } from '~/constants';
+import { TECH_DATA } from '~/constants/stacks';
 import { createMeta } from '~/utils/seo';
 
 
@@ -15,11 +16,9 @@ export function meta() {
   });
 }
 
-
 export default function TechStackRedesign() {
   return (
     <Paper variant='hero'>
-
   
     <Box maw={800} mx="auto" py={60} px="lg">
       {TECH_DATA.map((section, sectionIndex) => (
