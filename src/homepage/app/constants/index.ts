@@ -2,12 +2,12 @@ import { IconBrandFacebook, IconBrandLinkedin, IconBrandUpwork } from "@tabler/i
 
 export const SITE_CONFIG = {
   title: "Project RunPi",
-  description: "I build practical web apps that get the job down. This is my corner of the web where I share what I'm making, my portfolio, and how we can work together",
+  description: "I build small, practical tools and apps, and share the process on my devlog. Currently working in Laravel and React Router.",
   copyright: "© 2026 Project RunPi. All rights reserved."
 };
 
 
-export const OG_DESCRIPTION = "This is my corner of the web where I share what I'm making, my portfolio, and how we can work together."
+export const OG_DESCRIPTION = "Backend-focused full-stack developer sharing what I'm building — practical tools, apps, and the process behind them."
 
 
 export const NAV_LINKS = [
@@ -19,10 +19,10 @@ export const NAV_LINKS = [
     label: 'Tech Stack',
     href: '/tech-stacks',
   },
-  {
-    label: 'Services',
-    href: '/services',
-  },
+  // {
+  //   label: 'Services',
+  //   href: '/services',
+  // },
   {
     label: 'About',
     href: '/about',

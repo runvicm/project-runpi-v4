@@ -91,7 +91,7 @@ function DevlogCard({ log }: { log: DevLogProps }) {
               <Badge 
                 key={tag.slug} 
                 color={colorClass}
-                variant="light" 
+                // variant="light" 
                 radius="sm" 
                 size="sm"
               style={{ textTransform: 'lowercase' }}
@@ -144,13 +144,13 @@ function DevlogCard({ log }: { log: DevLogProps }) {
 
 
 const TAG_COLOR = [
-  'teal',
   'blue',
-  'green',
-  'yellow',
   'orange',
-  'red',
+  'green',
   'pink',
+  'teal',
+  'red',
+  'yellow',
 ] as const;
 
 function getTagColor(index: number) {

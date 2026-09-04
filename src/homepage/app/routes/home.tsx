@@ -1,7 +1,6 @@
 import Hero from "~/components/Hero";
 import Project from "~/components/Project";
 import Devlog from "~/components/Devlog";
-import Services from "~/components/Services";
 import { createMeta } from "~/utils/seo";
 import { OG_DESCRIPTION, SITE_CONFIG } from "~/constants";
 import { env } from "cloudflare:workers";
@@ -33,7 +32,6 @@ export function loader() {
   return { devlogs };
 }
 
-
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const slug = formData.get("slug") as string;
@@ -50,15 +48,12 @@ export async function action({ request }: ActionFunctionArgs) {
   return null;
 }
 
-
-
 export default function Home() {
 
   return (
     <>
       <Hero />
       <Project />
-      <Services />
       <Devlog />
     </>
   );

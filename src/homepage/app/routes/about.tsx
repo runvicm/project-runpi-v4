@@ -26,13 +26,11 @@ export default function AboutPage() {
             This is my corner of the web where I document my journey in web development.
           </Text>
           <Text>
-            This project started when I got my hands on a Raspberry Pi 5 and decided to try self-hosting a website. What began as a curiosity about whether a tiny computer could actually run a real site turned into my testing ground for learning server management, deployment, and all the behind-the-scenes stuff that makes websites actually work.
-          </Text>
+            This project started when I got my hands on a Raspberry Pi 5 and decided to try self-hosting a website. What began as a curiosity about whether a tiny computer could actually run a real site turned into my testing ground for learning server management, deployment, and all the behind-the-scenes stuff that makes websites actually work.          </Text>
           <Text>
-            I built this site to keep track of the projects I'm working on, the tools I'm experimenting with, and the lessons I learn along the way. It's part portfolio, part notebook, a place where I test ideas, figure out what works (and what doesn't), and watch my skills evolve over time.
-          </Text>
+            I built this site to keep track of the projects I'm working on, the tools I'm experimenting with, and the lessons I learn along the way. It's part portfolio, part notebook. A place where I test ideas, figure out what works (and what doesn't), and watch my skills evolve over time.          </Text>
           <Text fw={600} c="dark.9">
-            Today it's grown into a proper showcase of React Router 7, TypeScript, Tailwind, and Laravel.
+            Today, it's grown into a proper showcase of React Router 7, TypeScript, Tailwind, and Laravel, and it's still evolving right along with me.
           </Text>
         </Stack>
       </Box>
@@ -71,8 +69,8 @@ export default function AboutPage() {
             />
           </Stack>
         </Grid.Col>
-
       </Grid>
+
     </Container>
   );
 }

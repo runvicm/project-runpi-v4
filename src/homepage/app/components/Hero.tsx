@@ -63,7 +63,7 @@ export default function Hero() {
             <Stack align="flex-start" gap="lg">
               
               {/* Subtle status badge */}
-              <Box 
+              {/* <Box 
                 px="md" 
                 py={6} 
                 style={{ 
@@ -75,7 +75,7 @@ export default function Hero() {
                 <Text size="xs" fw={200} c="dimmed">
                   ✨ Available for freelance & full-time roles
                 </Text>
-              </Box>
+              </Box> */}
 
               {/* Massive, bold headline */}
               <Title 
@@ -84,11 +84,11 @@ export default function Hero() {
                   fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', 
                   fontWeight: 800, 
                   lineHeight: 1.1,
-                  // letterSpacing: '-0.03em'
+                  // letterSpacing: '-0.00em'
                 }}
               >
                 Project RunPi <br />
-                <Text size="xl">Full-Stack Developer</Text>
+                <Text size="xl">Backend-focused Full-Stack Developer</Text>
               </Title>
 
 
