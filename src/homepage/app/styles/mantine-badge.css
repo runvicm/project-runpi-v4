@@ -1,0 +1,5 @@
+.mantine-Badge-label {
+  text-box-trim: none;
+  line-height: 1;
+  transform: translateY(0.5px);
+}

@@ -5,7 +5,7 @@ export default [
   layout("routes/layout.tsx", [
     index("routes/home.tsx"), 
     route("services", "routes/services.tsx"),
-    route("tech-stacks", "routes/tech-stacks.tsx"),
+    route("tech-stack", "routes/tech-stack.tsx"),
     route("about", "routes/about.tsx"),
   ]),
 

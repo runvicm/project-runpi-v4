@@ -15,7 +15,7 @@
 }
 
 /* Section Background 2 */
-.mantine-Paper-root[data-variant="b2"] {
+.mantine-Paper-root[data-variant="bg2"] {
   background-color: var(--color-bg2);
   color: var(--color-primary);
 }  

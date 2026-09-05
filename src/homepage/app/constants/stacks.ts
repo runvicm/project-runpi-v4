@@ -1,71 +1,118 @@
-import { IconBrandDocker, IconBrandReact, IconBrandTypescript, IconBrandVscode, IconGitPullRequest } from "@tabler/icons-react";
+import { IconBolt, IconBox, IconBrandDocker, IconBrandGithub, IconBrandLaravel, IconBrandReact, IconBrandTailwind, IconBrandTypescript, IconBrandUbuntu, IconBrandVscode, IconCloud, IconCpu, IconDatabase, IconGitBranch, IconGitPullRequest, IconLayoutDashboard, IconRoute, IconServer, IconServer2, IconSettings, IconSettingsAutomation } from "@tabler/icons-react";
 
 export const TECH_DATA = [
-  {
+ {
     category: 'Development Environment',
     items: [
-      {
-        id: 'vscode',
-        name: 'VSCode',
-        icon: IconBrandVscode,
-        color: 'blue', // Match the brand color!
+      { id: 'vscode', name: 'VSCode', icon: IconBrandVscode, color: 'blue',
         description: 'My daily driver for coding. Quick and works great with everything.',
-        status: 'Active',
-        docs: 'https://code.visualstudio.com/docs'
-      },
-      {
-        id: 'docker',
-        name: 'Docker Windows',
-        icon: IconBrandDocker,
-        color: 'cyan',
+        status: 'Active', docs: 'https://code.visualstudio.com/docs' },
+      { id: 'docker-windows', name: 'Docker Windows', icon: IconBrandDocker, color: 'cyan',
         description: 'Same Docker setup as production, just on Windows. Keeps dev and prod identical and my system clean.',
-        status: 'Active',
-        docs: 'https://docs.docker.com/'
-      },
-      {
-        id: 'devontainer',
-        name: 'Dev Container',
-        icon: IconBrandDocker,
-        color: 'cyan',
-        description: 'Same Docker setup as production, just on Windows. Keeps dev and prod identical and my system clean.',
-        status: 'Active',
-        docs: 'https://docs.docker.com/'
-      },
-      
-      {
-        id: 'gitea',
-        name: 'Gitea',
-        icon: IconGitPullRequest,
-        color: 'green',
+        status: 'Active', docs: 'https://docs.docker.com/manuals/' },
+      { id: 'devcontainer', name: 'Dev Container', icon: IconBox, color: 'blue',
+        description: 'Creates isolated environments for each project. Makes switching between projects instant and painless.',
+        status: 'Active', docs: 'https://code.visualstudio.com/docs/devcontainers/containers' },
+      { id: 'git', name: 'Git', icon: IconGitBranch, color: 'orange',
+        description: 'Version control. Tracks changes, handles branches, lets me go back when I break things.',
+        status: 'Active', docs: 'https://git-scm.com/docs' },
+      { id: 'gitea', name: 'Gitea', icon: IconGitPullRequest, color: 'green',
         description: 'Self-hosted Git server I ran on my Pi. Moved back to GitHub to keep things simpler.',
-        status: 'Used',
-        docs: 'https://docs.gitea.com/'
-      }
+        status: 'Used', docs: 'https://docs.gitea.com/' },
+      { id: 'github', name: 'Github', icon: IconBrandGithub, color: 'dark',
+        description: 'Backup for my repositories. Keeps an off-site copy just in case.',
+        status: 'Active', docs: 'https://docs.github.com/en' },
     ]
   },
   {
     category: 'Frontend',
     items: [
-      {
-        id: 'react',
-        name: 'React',
-        icon: IconBrandReact,
-        color: 'cyan',
-        description: 'What I use for front-end work. Still learning, but it’s powering my current projects.',
-        status: 'Active',
-        docs: 'https://react.dev/'
-      },
-      {
-        id: 'typescript',
-        name: 'Typescript',
-        icon: IconBrandTypescript,
-        color: 'blue',
+      { id: 'react', name: 'React', icon: IconBrandReact, color: 'cyan',
+        description: "What I use for front-end work. Still learning, but it's powering my current projects.",
+        status: 'Active', docs: 'https://react.dev/learn' },
+      { id: 'react-router', name: 'React Router 7', icon: IconRoute, color: 'red',
+        description: 'Currently my go-to for frontend routing. Switched to it for the built-in SSR support out of the box.',
+        status: 'Active', docs: 'https://reactrouter.com/home' },
+      { id: 'typescript', name: 'Typescript', icon: IconBrandTypescript, color: 'blue',
         description: 'Catches bugs before runtime. Still learning it, but already writing more reliable code.',
-        status: 'Active',
-        docs: 'https://www.typescriptlang.org/docs/'
-      }
+        status: 'Active', docs: 'https://www.typescriptlang.org/docs/' },
+      { id: 'inertiajs', name: 'InertiaJS', icon: IconBolt, color: 'violet',
+        description: 'Bridges Laravel and React without needing a separate API. Makes full-stack development way smoother.',
+        status: 'Active', docs: 'https://inertiajs.com/docs/v2/getting-started/index' },
+      { id: 'tailwind', name: 'Tailwind CSS', icon: IconBrandTailwind, color: 'cyan',
+        description: 'CSS framework that makes styling quick. Still picking it up, but no more writing custom CSS.',
+        status: 'Active', docs: 'https://tailwindcss.com/docs/installation/using-vite' },
+      { id: 'vite', name: 'Vite', icon: IconBolt, color: 'violet',
+        description: 'Bundles and serves React during development. Super fast refresh and modern build tooling.',
+        status: 'Active', docs: 'https://vite.dev/guide/' },
     ]
-  } 
+  },
+  {
+    category: 'Backend',
+    items: [
+      { id: 'laravel', name: 'Laravel', icon: IconBrandLaravel, color: 'red',
+        description: 'My go-to PHP framework. Works great with Inertia and has tons of built-in features.',
+        status: 'Active', docs: 'https://laravel.com/docs/12.x' },
+      { id: 'inertiajs-backend', name: 'InertiaJS', icon: IconBolt, color: 'violet',
+        description: 'Takes care of the backend-to-frontend connection. Routes and data flow to React without an API.',
+        status: 'Active', docs: 'https://inertiajs.com/docs/v2/getting-started/index' },
+      { id: 'mysql', name: 'MySQL', icon: IconDatabase, color: 'blue',
+        description: 'My go-to database for structured data. Reliable and works naturally with PHP.',
+        status: 'Used', docs: 'https://dev.mysql.com/doc/' },
+      { id: 'postgresql', name: 'PostgreSQL', icon: IconDatabase, color: 'indigo',
+        description: 'Switching to this database for a lighter and more powerful schema.',
+        status: 'Active', docs: 'https://www.postgresql.org/docs/' },
+    ]
+  },
+  {
+    category: 'Infrastructure & Deployment',
+    items: [
+      { id: 'raspberry-pi', name: 'Raspberry Pi 5', icon: IconCpu, color: 'red',
+        description: 'Where it all actually runs. Small but handles all my production hosting.',
+        status: 'Active', docs: 'https://www.raspberrypi.com/documentation/' },
+      { id: 'ubuntu', name: 'Ubuntu', icon: IconBrandUbuntu, color: 'orange',
+        description: 'The OS behind everything. Reliable, secure, and simple to work with.',
+        status: 'Active', docs: 'https://help.ubuntu.com/' },
+      { id: 'docker', name: 'Docker', icon: IconBrandDocker, color: 'cyan',
+        description: "Keeps everything in its own container so nothing breaks each other. Deployment's a breeze too.",
+        status: 'Active', docs: 'https://docs.docker.com/manuals/' },
+      { id: 'apache', name: 'Apache', icon: IconServer, color: 'red',
+        description: 'Serves everything up. Works perfectly with PHP and gives me the control I want.',
+        status: 'Used', docs: 'https://httpd.apache.org/docs-project/' },
+      { id: 'nginx', name: 'Nginx', icon: IconServer2, color: 'green',
+        description: 'My web server of choice. Handles reverse proxying and serves everything cleanly on the Pi.',
+        status: 'Active', docs: 'https://nginx.org/en/docs/index.html' },
+      { id: 'cloudflare', name: 'Cloudflare', icon: IconCloud, color: 'orange',
+        description: 'My DNS and security layer. Makes sites faster and blocks attacks before they reach my Pi.',
+        status: 'Active', docs: 'https://developers.cloudflare.com/' },
+      { id: 'cloudflare-workers', name: 'Cloudflare Workers & Pages', icon: IconCloud, color: 'orange',
+        description: 'Hosts all my SPAs. Supports SSR and easy to deploy.',
+        status: 'Active', docs: 'https://developers.cloudflare.com/workers/' },
+      { id: 'jenkins', name: 'Jenkins', icon: IconSettingsAutomation, color: 'red',
+        description: 'Used for my deployment pipeline and other automation.',
+        status: 'Used', docs: 'https://www.jenkins.io/doc/' },
+    ]
+  },
+  {
+    category: 'Admin/Management Tools',
+    items: [
+      { id: 'filament', name: 'Filament', icon: IconLayoutDashboard, color: 'yellow',
+        description: 'Handles admin panels and dashboards. Saves time building backend interfaces for managing data.',
+        status: 'Active', docs: 'https://filamentphp.com/docs' },
+      { id: 'cockpit', name: 'Cockpit', icon: IconLayoutDashboard, color: 'blue',
+        description: 'Handles admin panels, dashboards and Docker Management.',
+        status: 'Active', docs: 'https://cockpit-project.org/documentation.html' },
+      { id: 'webmin', name: 'Webmin', icon: IconSettings, color: 'blue',
+        description: 'Makes managing the Pi and deploying apps easier without SSH-ing into everything.',
+        status: 'Active', docs: 'https://webmin.com/docs/' },
+      { id: 'phpmyadmin', name: 'phpMyAdmin', icon: IconDatabase, color: 'indigo',
+        description: 'GUI for managing MySQL databases. Easier than command line for quick edits and exploration.',
+        status: 'Used', docs: 'https://www.phpmyadmin.net/docs/' },
+      { id: 'pgadmin', name: 'pgAdmin', icon: IconDatabase, color: 'blue',
+        description: 'GUI for managing PostgreSQL. Handles users and database management.',
+        status: 'Active', docs: 'https://www.pgadmin.org/docs/pgadmin4/latest/index.html' },
+    ]
+  },
 ];
 
 

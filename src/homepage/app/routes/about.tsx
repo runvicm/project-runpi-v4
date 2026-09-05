@@ -1,5 +1,5 @@
-import { Container, Title, Text, Grid, Box, Group, ThemeIcon, Stack } from '@mantine/core';
-import { IconRocket, IconCode, IconTrendingUp, IconBell, IconTarget, IconBulb } from '@tabler/icons-react';
+import { Container, Title, Text, Grid, Box, Group, ThemeIcon, Stack, Timeline, Badge, Card, SimpleGrid, Image, Paper } from '@mantine/core';
+import { IconRocket, IconCode, IconTrendingUp, IconBell, IconTarget, IconBulb, IconCpu, IconRefresh, IconNotebook, IconTools, IconServer } from '@tabler/icons-react';
 import { OG_DESCRIPTION, SITE_CONFIG } from '~/constants';
 import { createMeta } from '~/utils/seo';
 
@@ -13,65 +13,58 @@ export function meta() {
 
 export default function AboutPage() {
   return (
-    <Container size="md" py={80}>
-      
-      {/* Editorial Header */}
-      <Box mb={60} maw={700}>
-        <Title order={1} fw={900} style={{ fontSize: '3.5rem', letterSpacing: '-1px' }} mb="xl">
-          Hi there! 👋 <br />I'm Runvi.
-        </Title>
-        
-        <Stack gap="md" c="gray.7" __size="lg" lh={1.7}>
-          <Text>
-            This is my corner of the web where I document my journey in web development.
-          </Text>
-          <Text>
-            This project started when I got my hands on a Raspberry Pi 5 and decided to try self-hosting a website. What began as a curiosity about whether a tiny computer could actually run a real site turned into my testing ground for learning server management, deployment, and all the behind-the-scenes stuff that makes websites actually work.          </Text>
-          <Text>
-            I built this site to keep track of the projects I'm working on, the tools I'm experimenting with, and the lessons I learn along the way. It's part portfolio, part notebook. A place where I test ideas, figure out what works (and what doesn't), and watch my skills evolve over time.          </Text>
-          <Text fw={600} c="dark.9">
-            Today, it's grown into a proper showcase of React Router 7, TypeScript, Tailwind, and Laravel, and it's still evolving right along with me.
-          </Text>
+    <Paper variant="bg2">
+      <Container size="md" py={80}>
+        <Stack gap={48}>
+          {/* Hero */}
+          <Stack gap="xs" ta="center">
+            <Text size="sm" c="dimmed">ABOUT</Text>
+            <Title order={1}>This corner of the web</Title>
+            <Text c="dimmed" maw={500} mx="auto">A place to document what I'm building, what breaks, and what I learn fixing it.</Text>
+          </Stack>
+
+          {/* Journey */}
+        <Stack gap="md">
+          <Text size="sm" c="dimmed" tt="uppercase">The journey so far</Text>
+          <Text>This project started when I got my hands on a Raspberry Pi 5 and decided to try self-hosting a website. What began as a curiosity about whether a tiny computer could actually run a real site turned into my testing ground for learning server management, deployment, and all the behind-the-scenes stuff that makes websites actually work.</Text>
+          <Text>I built this site to keep track of the projects I'm working on, the tools I'm experimenting with, and the lessons I learn along the way. It's part portfolio, part notebook — a place where I test ideas, figure out what works (and what doesn't), and watch my skills evolve over time.</Text>
+          <Text fw={500}>Today, it's grown into a proper showcase of React Router 7, TypeScript, Tailwind, and Laravel — and it's still evolving right along with me.</Text>
         </Stack>
-      </Box>
 
-      {/* Two Column Feature Grid */}
-      <Grid gap={60} mt={80}>
-        
-        {/* Left Column */}
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Title order={3} c="dark.9" mb="xl">Explore My Work</Title>
-          <Stack gap="lg">
-            <FeatureItem icon={IconRocket} title="Projects:" desc="Solo builds shipped and self-hosted." />
-            <FeatureItem icon={IconCode} title="Tech Stack & Learnings:" desc="Notes and insights from tools I've worked with." />
-            <FeatureItem icon={IconTrendingUp} title="Progress & Growth:" desc="How I'm evolving as a developer through hands-on building." />
-            <FeatureItem icon={IconBell} title="Recent Updates:" desc="Latest things I'm working on and learning." />
+          {/* Two column: what / how */}
+        <SimpleGrid cols={2} spacing="lg">
+          <Card radius="md" p="lg">
+            <ThemeIcon variant="light" color="teal" size={40} radius="md" mb="sm">
+              <IconTools size={20} />
+            </ThemeIcon>
+            <Text fw={500} mb="xs">What this is</Text>
+            <Text size="sm" c="dimmed">Small, practical tools and apps, built and shipped one at a time.</Text>
+          </Card>
+          <Card radius="md" p="lg">
+            <ThemeIcon variant="light" color="teal" size={40} radius="md" mb="sm">
+              <IconServer size={20} />
+            </ThemeIcon>
+            <Text fw={500} mb="xs">How it's built</Text>
+            <Text size="sm" c="dimmed">Self-hosted on the Pi5, using React Router and Laravel.</Text>
+          </Card>
+        </SimpleGrid>
+
+        <Card radius="md" p="lg">
+          <Stack gap="md">
+            <Text fw={500}>The setup</Text>
+            <Text size="sm" c="dimmed">Everything you see here is what it runs on.</Text>
+            <SimpleGrid cols={2} spacing="sm">
+              <Image src="/assets/pi5-board.jpg" alt="Raspberry Pi 5 board" radius="md" h={250} fit="cover" />
+              <Image src="/assets/pi5-nvme.jpg" alt="Pi5 Hat" radius="md" h={250} fit="cover" />
+              <Image src="/assets/pi5-test.jpg" alt="Test Run" radius="md" h={250} fit="cover" />
+              <Image src="/assets/pi5-server.jpg" alt="Finished Setup" radius="md" h={250} fit="cover" />
+            </SimpleGrid>
           </Stack>
-        </Grid.Col>
+        </Card>
+        </Stack>
+      </Container>
 
-        {/* Right Column */}
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Title order={3} c="dark.9" mb="xl">About This Space</Title>
-          <Text c="gray.6" mb="xl" lh={1.6}>
-            This site is my project hub and learning journal rolled into one. A space where experimentation and learning happen out loud.
-          </Text>
-
-          <Stack gap="lg">
-            <FeatureItem 
-              icon={IconTarget} 
-              title="What I'm Doing" 
-              desc="Building and self-hosting solo projects, learning in public, and documenting everything along the way." 
-            />
-            <FeatureItem 
-              icon={IconBulb} 
-              title="How I Learn" 
-              desc="Learn by building. Every project here, successful or not, taught me something valuable worth sharing." 
-            />
-          </Stack>
-        </Grid.Col>
-      </Grid>
-
-    </Container>
+    </Paper>
   );
 }
 

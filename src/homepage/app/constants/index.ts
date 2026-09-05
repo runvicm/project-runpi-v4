@@ -2,7 +2,7 @@ import { IconBrandFacebook, IconBrandLinkedin, IconBrandUpwork } from "@tabler/i
 
 export const SITE_CONFIG = {
   title: "Project RunPi",
-  description: "I build small, practical tools and apps, and share the process on my devlog. Currently working in Laravel and React Router.",
+  description: "I build and self-host my own projects here, working through everything from backend infrastructure to the interfaces on top, and using each one as a chance to get better at the full stack.",
   copyright: "© 2026 Project RunPi. All rights reserved."
 };
 
@@ -17,7 +17,7 @@ export const NAV_LINKS = [
   },
   {
     label: 'Tech Stack',
-    href: '/tech-stacks',
+    href: '/tech-stack',
   },
   // {
   //   label: 'Services',

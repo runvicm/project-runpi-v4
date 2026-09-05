@@ -7,10 +7,9 @@ import { TECH_DATA } from '~/constants/stacks';
 import { createMeta } from '~/utils/seo';
 
 
-
 export function meta() {
   return createMeta({
-    title: `${SITE_CONFIG.title} - Homepage`,
+    title: `${SITE_CONFIG.title} - Tech Stacks`,
     description: `${OG_DESCRIPTION}`,
     type: "website"
   });
@@ -26,21 +25,15 @@ export default function TechStackRedesign() {
           <Title order={2} size="h3" c="teal.7" mb="xl" fw={700}>
             {section.category}
           </Title>
-
-
           <Paper bg="white" p="xl" radius="lg" shadow="sm">
-
-       
           <Stack gap={0}>
             {section.items.map((item, index) => {
-              // 1. Assign the Tabler icon reference to a capitalized variable
-              const Icon = item.icon;
-
+              const Icon = item.icon;   // Icon assignment
               return (
                 <Box key={item.id}>
                   <Group wrap="nowrap" align="flex-start" py="lg">
                     
-                    {/* 2. Wrap the icon in a sleek ThemeIcon using the item's brand color */}
+                   {/* Stack Icon */}
                     <ThemeIcon 
                       size={48} 
                       radius="md" 
@@ -50,6 +43,7 @@ export default function TechStackRedesign() {
                       <Icon size={28} stroke={1.5} />
                     </ThemeIcon>
 
+                    {/* Body */}
                     <Box style={{ flex: 1 }}>
                       <Group gap="sm" mb={4}>
                         <Text fw={600} size="lg" c="dark.9">
@@ -69,10 +63,11 @@ export default function TechStackRedesign() {
                       </Text>
                     </Box>
 
+                    {/* document link */}
                     <Anchor 
                       href={item.docs} 
                       target="_blank" 
-                      c="gray.5" 
+                      // c="gray.5" 
                       size="sm" 
                       style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
                     >
@@ -81,7 +76,7 @@ export default function TechStackRedesign() {
                   </Group>
 
                   {index < section.items.length - 1 && (
-                    <Divider color="gray.2" />
+                   <Divider style={{ borderTopColor: "var(--color-primary)" }} />
                   )}
                 </Box>
               );
