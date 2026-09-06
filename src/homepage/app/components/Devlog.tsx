@@ -5,8 +5,6 @@ import { Await, useFetcher, useLoaderData } from 'react-router';
 export default function Devlog() {
   const { devlogs } = useLoaderData<{devlogs: DevLogProps[]}>();
 
-  console.log(devlogs);
-
   return (
     <Paper py={100} variant="devlog">
       <Container size={1280} >

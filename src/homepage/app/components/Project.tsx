@@ -3,6 +3,26 @@ import { IconBrandGithub, IconExternalLink, IconLock } from '@tabler/icons-react
 import { PROJECTS } from '~/constants'
 
 
+const BADGES = [
+  {
+    label: "Frontend",
+    color: "yellow"
+  },
+  {
+    label: "Backend",
+    color: "green"
+  },
+  {
+    label: "Fullstack",
+    color: "blue"
+  },
+  {
+    label: "DevOps",
+    color: "grape"
+  },
+];
+
+
 export default function Project() {
   return (
     <Paper py={100} variant='project'>
@@ -21,50 +41,22 @@ export default function Project() {
               Things I build on my own time.
             </Text>
 
-            {/* Filter / Category Badges */}
+            {/* Subtitle badge */}
             <Group gap="sm">
-              <Badge 
-                color="yellow" 
-                variant="light" 
-                size="lg" 
-                radius="xl" 
-                tt="none" 
-                fw={600}
-              >
-                Frontend
-              </Badge>
-              <Badge 
-                color="green" 
-                variant="light" 
-                size="lg" 
-                radius="xl" 
-                tt="none" 
-                fw={600}
-              >
-                Backend
-              </Badge>
-              <Badge 
-                color="blue" 
-                variant="light" 
-                size="lg" 
-                radius="xl" 
-                tt="none" 
-                fw={600}
-              >
-                Fullstack
-              </Badge>
-              <Badge 
-                color="grape" 
-                variant="light" 
-                size="lg" 
-                radius="xl" 
-                tt="none" 
-                fw={600}
-              >
-                DevOps
-              </Badge>
+              {BADGES.map((badge, index) => (
+                <Badge
+                  key={index} 
+                  color={badge.color} 
+                  variant="light" 
+                  size="lg" 
+                  radius="xl" 
+                  tt="none" 
+                  fw={600}
+                >
+                  {badge.label}
+                </Badge>
+              ))}
             </Group>
-
           </Stack>
         </Box>
 
@@ -77,93 +69,103 @@ export default function Project() {
           direction="row"
           wrap="wrap"
         >
-          {PROJECTS.map((project, index) => (
-            <Card key={index} variant="project">
-              {/* Header Section showing URL */}
-              <Card.Section 
-                withBorder 
-                py="xs" 
-                px="md" 
-                style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #e9ecef' }}
-              >
-                <Box
-                  style={{
-                    backgroundColor: '#ffffff',
-                    border: '1px solid #e9ecef',
-                    borderRadius: '6px',
-                    padding: '6px 12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%'
-                  }}
+
+          {PROJECTS.map((project, index) => {
+            const isLive = project.status === "live";
+
+            return (
+              <Card key={index} variant="project">
+                {/* Header Section showing URL */}
+                <Card.Section 
+                  withBorder 
+                  py="xs" 
+                  px="md" 
+                  style={{ backgroundColor: '#f8f9fa', borderBottom: '1px solid #e9ecef' }}
                 >
-                  <Group gap={8} align="center">
-                    <IconLock size={14} color="var(--mantine-color-gray-5)" stroke={2} />
-                    <Text size="sm" style={{ fontFamily: 'monospace' }}>
-                      {/* Highlighted subdomain, muted root domain */}
-                      <Text span fw={600} c="orange.7">{project.hostname}</Text>
-                      <Text span>.projectrunpi.com</Text>
-                    </Text>
-                  </Group>
-                </Box>
-              </Card.Section>
+                  <Box
+                    style={{
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #e9ecef',
+                      borderRadius: '6px',
+                      padding: '6px 12px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      width: '100%'
+                    }}
+                  >
+                    <Group gap={8} align="center">
+                      <IconLock size={14} color="var(--mantine-color-gray-5)" stroke={2} />
+                      <Text size="sm" style={{ fontFamily: 'monospace' }}>
+                        {isLive ? (
+                          <>
+                            <Text span fw={600} c="orange.7">{project.hostname}</Text>
+                            <Text span>.projectrunpi.com</Text>
+                          </>
+                        ) : (
+                          <Text fw={600} c="orange.7">Null</Text>
+                        )}
+                      </Text>
+                    </Group>
+                  </Box>
+                </Card.Section>
 
-              {/* Prohect Preview */}
-              <Card.Section>
-                <Image
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  height={160}
-                  alt="Project preview"
-                  style={{ borderBottom: '1px solid #e9ecef' }}
-                />
-              </Card.Section>
+                {/* Project Preview */}
+                <Card.Section>
+                  <Image
+                    src={project.image}
+                    alt="Project preview"
+                    fallbackSrc="/assets/project/coming-soon.png"
+                    style={{ borderBottom: '1px solid #e9ecef', width: '100%', height: 200, objectFit: 'cover' }}
+                  />
+                </Card.Section>
 
+                {/* Title and Status Badge */}
+                <Group justify="space-between" mt="md" mb="xs">
+                  <Text fw={700} size="lg" style={{ color: "var(--color-primary)" }}>
+                    {project.title}
+                  </Text>
 
-              {/* Title and Status Badge */}
-              <Group justify="space-between" mt="md" mb="xs">
-                <Text fw={700} size="lg" c="var(--color-bg2)">
-                  {project.title}
+                  <Badge color={isLive ? "green" : "red"} variant="light" radius="sm">
+                    {project.status}
+                  </Badge>
+                </Group>
+
+                {/* Description */}
+                <Text size="sm" c="dimmed" lineClamp={3} mb="md">
+                  {project.description}
                 </Text>
-                {/* <Badge color="teal.6" variant="light" radius="sm">
-                  {project.status}
-                </Badge> */}
-              </Group>
 
-              {/* Description */}
-              <Text size="sm" c="dimmed" lineClamp={3} mb="md">
-                {project.description}
-              </Text>
+                {/* Tech Stack Tags */}
+                <Group gap="xs" mb="md" mt="auto">
+                  {project.stacks.map((stack, i) => (
+                    <Badge key={i} size="xs" variant="outline" color="gray" radius="sm">
+                      {stack}
+                    </Badge>
+                  ))}
+                </Group>
 
-              {/* Tech Stack Tags */}
-              <Group gap="xs" mb="md" mt="auto">
-                {project.stacks.map((stack, index) => (
-                  <Badge key={index} size="xs" variant="outline" color="gray" radius="sm">{stack}</Badge>
-                ))}
-              </Group>
-            
-              {/* Footer Actions */}
-              <Group gap="sm" >
-                <Button 
-                  variant="primary" 
-                  flex={1} 
-                  rightSection={<IconExternalLink size={16} />}
-                >
-                   View Project
-                </Button>
-                
-                <ActionIcon 
-                  variant="default" 
-                  size={36} 
-                  radius="md"
-                  aria-label="GitHub Repository"
-                >
-                  <IconBrandGithub size={20} stroke={1.5} color="var(--mantine-color-gray-7)" />
-                </ActionIcon>
-              </Group>
-          
-            </Card>
-          ))}
-
+                {/* Footer Actions */}
+                <Group gap="sm">
+                  <Button 
+                    variant="primary" 
+                    flex={1} 
+                    rightSection={<IconExternalLink size={16} />}
+                    disabled={!isLive}
+                  >
+                    View Project
+                  </Button>
+                  <ActionIcon 
+                    variant="default" 
+                    size={36} 
+                    radius="md"
+                    aria-label="GitHub Repository"
+                  >
+                    <IconBrandGithub size={20} stroke={1.5} color="var(--mantine-color-gray-7)" />
+                  </ActionIcon>
+                </Group>
+              </Card>
+            );
+          })}
         </Flex>
       
       </Container>

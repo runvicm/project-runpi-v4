@@ -19,10 +19,6 @@ export const NAV_LINKS = [
     label: 'Tech Stack',
     href: '/tech-stack',
   },
-  // {
-  //   label: 'Services',
-  //   href: '/services',
-  // },
   {
     label: 'About',
     href: '/about',
@@ -40,32 +36,32 @@ export const SOCIAL_LINKS = [
 export const PROJECTS = [
   {
     hostname: 'devlog',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/assets/project/devlog.png',
     title: 'Developer Log',
-    status: 'developement',
-    description: 'thisasd asd asda sd asd ads asd asdas asd asd asd asd asda da dasd er asdf sdf sdfaswea dasewe asdasd asd asd asd asd asda sas dasd asd',
-    stacks: ['Laravel', 'React Router', 'Mantine'],
-    url: 'https://devlog.yourdomain.com',
+    status: 'live',
+    description: 'A dev blog where I share progress, updates, and lessons along the way.',
+    stacks: ['Laravel', 'React Router 7', 'DaisyUI'],
+    url: 'https://devlog.projectrunpi.com',
     repoUrl: 'https://github.com/yourhandle/devlog'
   },
   {
     hostname: 'minecraft',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Development Log',
+    image: '/assets/project/minecraft.png',
+    title: 'Minecradt Server',
     status: 'live',
-    description: 'thisasd asd asda sd asd ads asd   ',
-    stacks: ['React', 'Laravel', 'Mantine'],
-    url: 'https://devlog.yourdomain.com',
+    description: "Info Page and updates for my self-hosted Minecraft server",
+    stacks: ['Laravel', 'nextJS', 'TailwindCSS', 'CSS'],
+    url: 'https://devlog.projectrunpi.com',
     repoUrl: 'https://github.com/yourhandle/devlog'
   },
   {
     hostname: 'events',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Development Log',
-    status: 'live',
-    description: 'thisasd asd asda sd asd ads asd asdas asdf dfg sfdg dsasda da sd asd',
-    stacks: ['React', 'Laravel', 'Mantine'],
-    url: 'https://devlog.yourdomain.com',
+    image: '',
+    title: 'Event List',
+    status: 'development',
+    description: 'An event calendar focused on local anime and cosplay meetups.',
+    stacks: [],
+    url: 'https://devlog.projectrunpi.com',
     repoUrl: 'https://github.com/yourhandle/devlog'
   },
 ];

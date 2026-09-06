@@ -54,10 +54,10 @@ export default function AboutPage() {
             <Text fw={500}>The setup</Text>
             <Text size="sm" c="dimmed">Everything you see here is what it runs on.</Text>
             <SimpleGrid cols={2} spacing="sm">
-              <Image src="/assets/pi5-board.jpg" alt="Raspberry Pi 5 board" radius="md" h={250} fit="cover" />
-              <Image src="/assets/pi5-nvme.jpg" alt="Pi5 Hat" radius="md" h={250} fit="cover" />
-              <Image src="/assets/pi5-test.jpg" alt="Test Run" radius="md" h={250} fit="cover" />
-              <Image src="/assets/pi5-server.jpg" alt="Finished Setup" radius="md" h={250} fit="cover" />
+              <Image src="/assets/pi5-board.webp" alt="Raspberry Pi 5 board" radius="md" h={250} fit="cover" />
+              <Image src="/assets/pi5-nvme.webp" alt="Pi5 Hat" radius="md" h={250} fit="cover" />
+              <Image src="/assets/pi5-test.webp" alt="Test Run" radius="md" h={250} fit="cover" />
+              <Image src="/assets/pi5-server.webp" alt="Finished Setup" radius="md" h={250} fit="cover" />
             </SimpleGrid>
           </Stack>
         </Card>
