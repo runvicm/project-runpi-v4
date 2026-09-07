@@ -1,5 +1,5 @@
-import { Container, Title, Text, Grid, Box, Group, ThemeIcon, Stack, Timeline, Badge, Card, SimpleGrid, Image, Paper } from '@mantine/core';
-import { IconRocket, IconCode, IconTrendingUp, IconBell, IconTarget, IconBulb, IconCpu, IconRefresh, IconNotebook, IconTools, IconServer } from '@tabler/icons-react';
+import { Container, Title, Text, Box, Group, ThemeIcon, Stack, Card, SimpleGrid, Image, Paper } from '@mantine/core';
+import { IconTools, IconServer } from '@tabler/icons-react';
 import { OG_DESCRIPTION, SITE_CONFIG } from '~/constants';
 import { createMeta } from '~/utils/seo';
 

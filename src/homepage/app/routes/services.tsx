@@ -22,7 +22,6 @@ const tiers = [
   },
 ];
 
-
 export function meta() {
   return createMeta({
     title: `${SITE_CONFIG.title} - Services`,
@@ -32,6 +31,11 @@ export function meta() {
 }
 
 
+/**
+ * TO DO: This page is for future use
+ * 
+ * @returns 
+ */
 export default function ServicesPage() {
   return (
     <Container size="md" py={80}>

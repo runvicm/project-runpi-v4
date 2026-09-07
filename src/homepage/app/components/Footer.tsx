@@ -1,5 +1,4 @@
-import { ActionIcon, Anchor, Button, Container, Divider, Grid, Group, Paper, Stack, Text, Textarea, TextInput, Title } from "@mantine/core";
-import { IconBrandFacebook, IconBrandLinkedin, IconBrandMedium, IconBrandUpwork } from "@tabler/icons-react";
+import { ActionIcon, Anchor, Container, Divider, Grid, Group, Paper, Stack, Text, Textarea, TextInput, Title } from "@mantine/core";
 import { NavLink } from "react-router";
 import { NAV_LINKS, SITE_CONFIG, SOCIAL_LINKS } from "~/constants";
 import ContactForm from "./blocks/ContactForm";

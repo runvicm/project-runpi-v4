@@ -1,6 +1,5 @@
-import { ActionIcon, Box, Burger, Button, Container, Drawer, Flex, Group, Image, NavLink, Stack, TextInput } from "@mantine/core";
+import { Box, Burger, Button, Container, Drawer, Flex, Group, Image, NavLink, Stack } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconArrowRight, IconSearch } from "@tabler/icons-react";
 import { Link, useLocation } from "react-router";
 import { NAV_LINKS, SITE_CONFIG } from "~/constants";
 import SearchBar from "./SearchBar";

@@ -6,9 +6,7 @@ export const SITE_CONFIG = {
   copyright: "© 2026 Project RunPi. All rights reserved."
 };
 
-
 export const OG_DESCRIPTION = "Backend-focused full-stack developer sharing what I'm building — practical tools, apps, and the process behind them."
-
 
 export const NAV_LINKS = [
   {
@@ -32,7 +30,7 @@ export const SOCIAL_LINKS = [
   { id: 'facebook', href: "https://www.facebook.com/runv.cm.2024/", icon: IconBrandFacebook },
 ];
   
-
+// Three (3) Projects only
 export const PROJECTS = [
   {
     hostname: 'devlog',

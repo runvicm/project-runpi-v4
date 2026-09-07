@@ -27,7 +27,7 @@ export function loader() {
     headers: {
       "Authorization": `Bearer ${API_KEY}`,
   }})
-  .then((res) => res.json()); // no await!
+  .then((res) => res.json()); // no await! use append
 
   return { devlogs };
 }

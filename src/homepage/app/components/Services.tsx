@@ -32,6 +32,12 @@ const PACKAGES = [
   }
 ];
 
+
+/**
+ * TODO: Will use in future
+ * 
+ * @returns 
+ */
 export default function Services() {
   return (
     <Paper py={60} variant="services">
@@ -48,8 +54,6 @@ export default function Services() {
             My Services
           </Title>
         </Box>
-
-
 
         <Box py={60}>
           <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl">

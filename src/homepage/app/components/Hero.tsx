@@ -61,21 +61,6 @@ export default function Hero() {
           <Grid.Col span={{ base: 12, md: 6, lg: 7 }}>
 
             <Stack align="flex-start" gap="lg">
-              
-              {/* Subtle status badge */}
-              {/* <Box 
-                px="md" 
-                py={6} 
-                style={{ 
-                  borderRadius: '999px', 
-                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                  border: '1px solid rgba(0, 0, 0, 0.08)' 
-                }}
-              >
-                <Text size="xs" fw={200} c="dimmed">
-                  ✨ Available for freelance & full-time roles
-                </Text>
-              </Box> */}
 
               {/* Massive, bold headline */}
               <Title 
@@ -84,7 +69,6 @@ export default function Hero() {
                   fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', 
                   fontWeight: 800, 
                   lineHeight: 1.1,
-                  // letterSpacing: '-0.00em'
                 }}
               >
                 Project RunPi <br />
@@ -152,9 +136,7 @@ export default function Hero() {
           <Grid.Col span={{ base: 12, md: 6, lg: 5 }} >
             <Image
               src="./hero-illu.svg"
-              // height={160}
               alt="Project preview"
-              // style={{ border: '1px solid #e9ecef' }}
             />
           </Grid.Col>
         </Grid>

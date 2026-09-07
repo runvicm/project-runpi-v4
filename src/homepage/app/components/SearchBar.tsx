@@ -1,6 +1,5 @@
 import { ActionIcon, TextInput } from '@mantine/core'
 import { IconSearch } from '@tabler/icons-react'
-import React from 'react'
 
 export default function SearchBar() {
   return (
@@ -8,7 +7,6 @@ export default function SearchBar() {
       radius="xl"
       size="md"
       placeholder="Search"
-      // rightSectionWidth={}
       rightSection={
         <ActionIcon 
           size={32} 

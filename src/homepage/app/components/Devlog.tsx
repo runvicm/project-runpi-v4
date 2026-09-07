@@ -67,12 +67,11 @@ function DevlogCard({ log }: { log: DevLogProps }) {
     <Card 
       radius="md" 
       padding="lg"
-      bg="#1c2533" // Deep dark blue from your image
+      bg="#1c2533"
       h="100%" 
       style={{ 
         display: 'flex', 
         flexDirection: 'column',
-        // border: log.featured ? '1px solid var(--mantine-color-red-8)' : '1px solid transparent'
       }}
     >
       {/* Top Row: Date and Tags */}
@@ -89,7 +88,6 @@ function DevlogCard({ log }: { log: DevLogProps }) {
               <Badge 
                 key={tag.slug} 
                 color={colorClass}
-                // variant="light" 
                 radius="sm" 
                 size="sm"
               style={{ textTransform: 'lowercase' }}
@@ -138,7 +136,6 @@ function DevlogCard({ log }: { log: DevLogProps }) {
     </Card>
   )
 }
-
 
 
 const TAG_COLOR = [
