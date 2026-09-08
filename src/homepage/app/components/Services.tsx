@@ -1,7 +1,6 @@
 import { Box, Button, Card, Center, Container, Group, Paper, SimpleGrid, Text, ThemeIcon, Title, } from "@mantine/core";
 import { IconArrowUpRight, IconDatabase, IconInfoCircle, IconLayersLinked, IconWorld } from "@tabler/icons-react";
 
-
 const PACKAGES = [
   {
     id: 'starter',

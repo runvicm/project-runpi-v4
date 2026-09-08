@@ -40,7 +40,7 @@ export const PROJECTS = [
     description: 'A dev blog where I share progress, updates, and lessons along the way.',
     stacks: ['Laravel', 'React Router 7', 'DaisyUI'],
     url: 'https://devlog.projectrunpi.com',
-    repoUrl: 'https://github.com/yourhandle/devlog'
+    repoUrl: 'https://github.com/runvicm/project-runpi-v4'
   },
   {
     hostname: 'minecraft',
@@ -50,7 +50,7 @@ export const PROJECTS = [
     description: "Info Page and updates for my self-hosted Minecraft server",
     stacks: ['Laravel', 'nextJS', 'TailwindCSS', 'CSS'],
     url: 'https://devlog.projectrunpi.com',
-    repoUrl: 'https://github.com/yourhandle/devlog'
+    repoUrl: 'https://github.com/runvicm/project-runpi-v4'
   },
   {
     hostname: 'events',

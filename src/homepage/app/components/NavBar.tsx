@@ -43,7 +43,8 @@ export default function NavBar() {
           </Box>
 
           {/* Burger Menu for mobile */}
-          <Burger 
+          <Burger
+            color="var(--color-primary)"
             opened={opened} 
             onClick={toggle} 
             aria-label="Toggle navigation" 

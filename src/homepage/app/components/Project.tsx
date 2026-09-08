@@ -102,7 +102,7 @@ export default function Project() {
                             <Text span>.projectrunpi.com</Text>
                           </>
                         ) : (
-                          <Text fw={600} c="orange.7">Null</Text>
+                          <Text span fw={600} c="orange.7">Null</Text> 
                         )}
                       </Text>
                     </Group>
@@ -145,20 +145,24 @@ export default function Project() {
                 </Group>
 
                 {/* Footer Actions */}
-                <Group gap="sm">
+                <Group gap="sm" align="center">
                   <Button 
-                    variant="primary" 
+                    variant={isLive ? "primary" : "disabled"}
                     flex={1} 
                     rightSection={<IconExternalLink size={16} />}
-                    disabled={!isLive}
+                    component="a"
+                    href={isLive ? `https://${project.hostname}.projectrunpi.com` : undefined}
+                    data-disabled={!isLive}
                   >
-                    View Project
+                    {isLive ? "View Project" : "Under Development"}
                   </Button>
                   <ActionIcon 
                     variant="default" 
                     size={36} 
                     radius="md"
                     aria-label="GitHub Repository"
+                    component="a"
+                    href=""
                   >
                     <IconBrandGithub size={20} stroke={1.5} color="var(--mantine-color-gray-7)" />
                   </ActionIcon>

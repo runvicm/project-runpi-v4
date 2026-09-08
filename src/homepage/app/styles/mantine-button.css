@@ -1,3 +1,13 @@
+.mantine-Button-label {
+  text-box-trim: none;
+  line-height: 1;
+  transform: translateY(0.5px); /* tweak as needed, or remove */
+}
+
+
+
+
+
 /* Primary Button */
 .mantine-Button-root[data-variant="primary"] {
   background-color: var(--color-primary);

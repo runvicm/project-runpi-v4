@@ -56,8 +56,8 @@ export interface DevLogProps {
 
 
 /**
- * 
- * @param log Checks props 
+ * @param log Checks props
+ *  
  * @returns 
  */
 function DevlogCard({ log }: { log: DevLogProps }) {
@@ -75,10 +75,15 @@ function DevlogCard({ log }: { log: DevLogProps }) {
       }}
     >
       {/* Top Row: Date and Tags */}
-      <Group justify="space-between" align="flex-start" mb="md">
-        <Group gap={6} c="gray.5" >
+      <Flex justify="space-between" align="center" mb="md">
+        <Group gap={6} c="gray.5">
           <IconCalendarEvent size={16} />
-          <Text size="xs">{log.published_at}</Text>
+          <Text
+            size="xs"
+            style={{ transform: 'translateY(0.5px)'}}
+          >
+            {log.published_at}
+          </Text>
         </Group>
         
         <Group gap={6}>
@@ -90,14 +95,14 @@ function DevlogCard({ log }: { log: DevLogProps }) {
                 color={colorClass}
                 radius="sm" 
                 size="sm"
-              style={{ textTransform: 'lowercase' }}
+                style={{ textTransform: 'lowercase' }}
               >
               #{tag.slug}
             </Badge>
             )
           })}
         </Group>
-      </Group>
+      </Flex>
 
       {/* Content */}
       <Text fw={700} size="lg" c="white" lh={1.3}>
@@ -118,7 +123,7 @@ function DevlogCard({ log }: { log: DevLogProps }) {
       <Group justify="space-between" mt="auto" pt="xl">
         <Group gap={6} align="center" c="gray.5">
           <IconEye size={16} />
-          <Text size="sm" lh={1}>{log.view_count}</Text>
+          <Text size="sm" lh={1} style={{ transform: 'translateY(0.5px)'}}>{log.view_count}</Text>
         </Group>
 
         <Anchor href={`https://devlog.projectrunpi.com/view/${log.slug}`}>
