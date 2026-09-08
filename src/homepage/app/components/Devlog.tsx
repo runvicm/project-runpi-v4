@@ -1,5 +1,5 @@
-import { Anchor, Badge, Box, Card, Container, Flex, Group, Paper, SimpleGrid, Text, Title } from '@mantine/core'
-import { IconArrowRight, IconCalendarEvent, IconEye } from '@tabler/icons-react';
+import { Anchor, Badge, Box, Card, Center, Container, Flex, Group, Paper, SimpleGrid, Skeleton, Stack, Text, Title } from '@mantine/core'
+import { IconArrowRight, IconCalendarEvent, IconEye, IconPlugOff } from '@tabler/icons-react';
 import { Await, useFetcher, useLoaderData } from 'react-router';
 
 export default function Devlog() {
@@ -21,24 +21,55 @@ export default function Devlog() {
           </Box>
 
           {/* Devlog Cards Grid */}
-          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
-            <Await
-              resolve={devlogs} 
-              children={(devlog) => {
-                return devlog.map((log, index) => (
-                  <div key={index}>
-                    <DevlogCard log={log} />
-                  </div>          
-                ))
-              }}
-            />
-          </SimpleGrid>
+          <Await
+            resolve={devlogs}
+            // Call back when API is down (Skeleotn with warning)
+            errorElement={
+              <>
+                <Center mb="md">
+                  <Badge
+                    color="red"
+                    variant="light"
+                    size="lg"
+                    radius="xl"
+                    leftSection={<IconPlugOff size={14} />}
+                  >
+                    Service temporarily unavailable
+                  </Badge>
+                </Center>
+             
+                <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
+                  {Array.from({ length: 3 }).map((_, i) => (
+                    <SkeletonCard key={i}/>
+                  ))}
+                </SimpleGrid>
+              </>
+            }
+            // Actual output card
+            children={(devlog) => {
+              return (
+                <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
+                  {devlog.map((log, index) => (
+                    <DevlogCard key={index} log={log} />
+                  ))}
+                </SimpleGrid>
+              )
+            }}
+          />
         </Box>
-
       </Container>
     </Paper>
   )
 }
+
+
+
+
+
+
+/**
+ * TO DO: seperate this later as app evolve
+ */
 
 
 export interface DevLogProps {
@@ -157,4 +188,49 @@ function getTagColor(index: number) {
   return TAG_COLOR[index % TAG_COLOR.length];
 } 
 
+function SkeletonCard() {
+    return (
+       <div data-mantine-color-scheme="dark">
+      <Card radius="lg" p="lg" bg="#1c2533" h="100%" withBorder >
+        <Stack gap="md">
+          {/* Top row: date icon + tags */}
+          <Group justify="space-between" align="center">
+            <Group gap={8}>
+              <Skeleton height={14} width={14} radius="sm" />
+              <Skeleton height={12} width={80} radius="sm" />
+            </Group>
+            <Group gap={6}>
+              <Skeleton height={20} width={48} radius="xl" />
+              <Skeleton height={20} width={40} radius="xl" />
+              <Skeleton height={20} width={48} radius="xl" />
+            </Group>
+          </Group>
+ 
+          {/* Title (2 lines) */}
+          <Stack gap={8}>
+            <Skeleton height={18} width="90%" radius="sm" />
+            <Skeleton height={18} width="55%" radius="sm" />
+          </Stack>
+ 
+          {/* Description (3 lines) */}
+          <Stack gap={8}>
+            <Skeleton height={12} width="100%" radius="sm" />
+            <Skeleton height={12} width="97%" radius="sm" />
+            <Skeleton height={12} width="70%" radius="sm" />
+          </Stack>
+ 
+          {/* Footer: views + read more */}
+          <Group justify="space-between" align="center" mt="xs">
+            <Group gap={6}>
+              <Skeleton height={14} width={14} radius="sm" />
+              <Skeleton height={12} width={16} radius="sm" />
+            </Group>
+            <Skeleton height={12} width={80} radius="sm" />
+          </Group>
+        </Stack>
+      </Card>
+    </div>
 
+  );
+
+}
