@@ -23,7 +23,7 @@ export default function Layout() {
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
         }}
       >
-        <NavBar />
+      <NavBar />
       </AppShell.Header>
 
       <AppShell.Main>
