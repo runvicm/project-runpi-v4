@@ -1,15 +1,48 @@
 @import "tailwindcss" source(".");
 
-/* @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+:root {
+ --bg: #F7F8FA;
+  --panel: #FFFFFF;
+  --border: #E1E4EA;
+  --text: #1B1E27;
+  --muted: #5B6472;
+  --muted-dim: #8890A0;
+  --accent: #4A63D6;
+  --accent-dim: #DCE3FB;
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'SFMono-Regular', monospace;
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+[data-mantine-color-scheme="dark"] {
+  --bg: #0F1115;
+  --panel: #14161C;
+  --border: #262B36;
+  --text: #DADEE6;
+  --muted: #7B8496;
+  --muted-dim: #545C6E;
+  --accent: #7C9EFF;
+  --accent-dim: #3E4A73;
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'SFMono-Regular', monospace;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+
+/* 
+  Global color override
+*/
+:root[data-mantine-color-scheme='light'] {
+  
+}
+
+:root[data-mantine-color-scheme='dark'] {
+  --mantine-color-body: var(--bg); 
+  --mantine-color-text: var(--text);
+
+  ::selection {
+    background: var(--accent-dim);
+    color: #fff;
   }
-} */
+  
+}
+
+

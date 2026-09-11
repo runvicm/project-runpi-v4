@@ -32,12 +32,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="dark" />
         <Meta />
         <Links />
       </head>
       <body>
-        <MantineProvider>
+        <MantineProvider defaultColorScheme="dark">
           {children}
         </MantineProvider>
         <ScrollRestoration />
