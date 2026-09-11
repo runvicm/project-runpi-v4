@@ -1,6 +1,6 @@
-import { Group, Paper, Text, Tree, type RenderTreeNodePayload, type TreeNodeData } from '@mantine/core';
-import { IconFile, IconFolder, IconFolderOpen } from '@tabler/icons-react';
-import { Link } from 'react-router';
+import { Group, Paper, Text, Tooltip, Tree, type RenderTreeNodePayload, type TreeNodeData } from '@mantine/core';
+import { IconFile, IconFolder, IconFolderOpen, IconHome } from '@tabler/icons-react';
+import { Link, NavLink, useLocation } from 'react-router';
 import classes from "~/themes/Navbar.module.css"
 
 const treeData: TreeNodeData[] = [
@@ -12,23 +12,23 @@ const treeData: TreeNodeData[] = [
         value: '2026/September',
         label: 'September',
         children: [
-          { value: 'e1', label: 'WASM boundary.md' },
+          { value: 'slug1', label: 'WASM boundary 2asdasd.md' },
         ],
       },
       {
         value: '2026/August',
         label: 'August',
         children: [
-          { value: 'e2', label: 'Queue refactor.md' },
-          { value: 'e3', label: 'Flaky CI test.md' },
+          { value: 'slug2', label: 'Queue refactor.md' },
+          { value: 'slug3', label: 'Flaky CI test.md' },
         ],
       },
       {
         value: '2026/July',
         label: 'July',
         children: [
-          { value: 'e4', label: 'DB migration.md' },
-          { value: 'e5', label: 'Rate limits.md' },
+          { value: 'slug4', label: 'DB migration.md' },
+          { value: 'slug5', label: 'Rate limits.md' },
         ],
       },
     ],
@@ -40,16 +40,29 @@ const treeData: TreeNodeData[] = [
 
 
 export default function Navbar() {
+
+  
   return (
-    <Paper className={classes.shell}>
-      <Text className={classes.treeroot}>~/devlog</Text>
+   <Paper className={classes.shell}>
+      <Text className={classes.treeroot}>
+        ~/devlog <span className={classes.count}>· {treeData.length} entries</span>
+      </Text>
+
+      <NavLink
+        to="/"
+        end
+        className={({ isActive }) => `${classes.homeFile} ${isActive ? classes.active : ''}`}
+      >
+        <IconHome size={14} className={classes.icon} />
+        <span className={classes.homeLabel}>index<span className={classes.ext}>.md</span></span>
+        <span className={classes.hint}>(all posts)</span>
+      </NavLink>
+
       <Tree
         data={treeData}
-        // withLines
         renderNode={(payload) => <Leaf {...payload} />}
-        className={classes.tree}
+        classNames={{ root: classes.root, node: classes.node, subtree: classes.subtree }}
       />
-
     </Paper>
 
 
@@ -60,29 +73,37 @@ export default function Navbar() {
 
 
 function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePayload) {
+
   return (
-    <Group gap={6} {...elementProps}>
+     <Group gap={8} wrap="nowrap" {...elementProps} className={classes.node}>
       {hasChildren ? (
-        expanded ? (
-          <IconFolderOpen size={14} style={{ opacity: 0.75 }} />
-        ) : (
-          <IconFolder size={14} style={{ opacity: 0.75 }} />
-        )
+        expanded
+          ? <IconFolderOpen size={14} className={classes.icon} />
+          : <IconFolder size={14} className={classes.icon} />
       ) : (
-        <IconFile size={14} style={{ opacity: 0.75 }} />
+        <IconFile size={14} className={classes.icon} />
       )}
 
       {hasChildren ? (
-        // Parent folders: standard text label (no Link)
-        <span>{node.label}</span>
+        <span className={classes.label}>{node.label}</span>
       ) : (
-        // Last child nodes: wrapped in Link
-        <Link 
-          to={`/your-path/${node.value}`} 
-          style={{ textDecoration: 'none', color: 'inherit' }}
-        >
-          <span>{node.label}</span>
-        </Link>
+        
+        <NavLink
+            to={`/view/${node.value}`}
+            className={({ isActive }) => `${classes.fileLink} ${isActive ? classes.active : ''}`}
+            >
+        <Tooltip
+         label={node.label}
+         position="bottom"
+         offset={5}
+         classNames={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}
+       >
+            <span className={classes.filename}>
+              {typeof node.label === 'string' ? node.label.replace(/\.md$/, '') : node.label}
+            </span>
+        </Tooltip>
+            <span className={classes.ext}>.md</span>
+          </NavLink>
       )}
     </Group>
 

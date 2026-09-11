@@ -1,54 +1,159 @@
-  .tree{
-    /* border-right: 1px solid var(--border); */
-    padding: 22px clamp(14px, 1.2vw, 24px) 40px;
-    font-family: var(--mono); font-size: 13px; color: var(--muted);
-    /* position: sticky; top: 49px; height: calc(100vh - 49px); overflow-y: auto; */
-  }
-  .tree ul{ list-style: none; margin: 0;}
-  .tree > ul{ padding-left: 8px; border-left: none; }
+.root{
+  --level-offset: 16px;
+}
 
-  
-  .treeroot{ color: var(--muted-dim); padding: 0 10px 14px; }
+.shell{
+  padding: 22px 14px 40px;
+  /* border-right: 1px solid var(--border); */
+  height: calc(100vh - 49px);
+  overflow-y: auto;
+}
+
+.treeroot{
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted-dim);
+  padding: 0 10px 14px;
+}
+
+.tree{
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.subtree{
+  border-left: 1px solid var(--border);
+  margin-left: 6px;
+}
+
+.count{
+  color: var(--muted-dim);
+  opacity: 0.7;
+}
+
+
+.node{
+  padding: 5px 8px;
+  border-radius: 4px;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 13px;
+  min-width: 0;
+  width: 100%;
+}
+
+.node:hover{
+  background: var(--panel);
+  color: var(--text);
+}
+
+.node:has(> .fileLink.active){
+  background: rgba(124,158,255,0.08);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.icon{
+  flex-shrink: 0;
+  color: var(--muted-dim);
+}
+
+.node:has(> .fileLink.active) .icon{
+  color: var(--accent);
+}
+
+.label{
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileLink{
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.filename{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+
+.active{
+  color: var(--text);
+}
+
+.homeFile{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px 0;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.homeFile:hover{
+  background: var(--panel);
+  color: var(--text);
+}
+
+.homeFile .icon{
+  color: var(--muted-dim);
+}
+
+
+.hint{
+  color: var(--muted-dim);
+  font-weight: 400;
+  font-size: 11.5px;
+  margin-left: 2px;
+}
+
+.homeFile.active{
+  background: rgba(124,158,255,0.08);
+  color: var(--text);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.homeFile.active .icon,
+.homeFile.active .ext{
+  color: var(--accent);
+}
+
+
+.ext{
+  flex-shrink: 0; /* never truncates, never shrinks */
+  color: var(--muted-dim);
+}
+.node:has(> .fileLink.active) .ext{
+  color: var(--accent);
+}
 
 
 
-  .tree-count{ color: var(--muted-dim); opacity: 0.7; }
-  .home-file{ margin: 0 0 14px 8px; padding-left: 8px; font-weight: 600; }
-  .tree li{ margin: 1px 0; }
-  .branch{ display:flex; align-items:center; gap:6px; padding: 5px 8px; color: var(--muted); }
-  .branch .caret{ color: var(--muted-dim); font-size: 10px; width: 10px; }
-  .file{
-    display:flex; align-items:center; gap: 8px; padding: 5px 8px 5px 22px;
-    border-radius: 4px; text-decoration:none; color: var(--muted);
-    transition: background .12s ease, color .12s ease; cursor: pointer;
-    min-width: 0;
-  }
-  .file .filename{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .file:hover{ background: var(--panel); color: var(--text); }
-  .file.active{ background: rgba(124,158,255,0.08); color: var(--text); box-shadow: inset 2px 0 0 var(--accent); }
-  .icon{ flex-shrink:0; display:inline-flex; }
-  .icon svg{ width: 14px; height: 14px; }
-  .branch .icon svg{ color: var(--muted-dim); }
-  .file .icon svg{ color: var(--muted-dim); }
-  .file:hover .icon svg{ color: var(--muted); }
-  .file.active .icon svg{ color: var(--accent); }
-  .meta .icon{ margin-right: 0; }
-  .meta .icon svg{ width: 12.5px; height: 12.5px; color: var(--muted-dim); }
-  .tag .icon svg{ width: 11px; height: 11px; color: var(--muted-dim); }
-  .tag[data-tag="rust"]{ color: #E3A857; border-color: rgba(227,168,87,0.35); }
-  .tag[data-tag="rust"] .icon svg{ color: #E3A857; }
-  .tag[data-tag="wasm"]{ color: #C792EA; border-color: rgba(199,146,234,0.35); }
-  .tag[data-tag="wasm"] .icon svg{ color: #C792EA; }
-  .tag[data-tag="architecture"]{ color: #7C9EFF; border-color: rgba(124,158,255,0.35); }
-  .tag[data-tag="architecture"] .icon svg{ color: #7C9EFF; }
-  .tag[data-tag="ci"], .tag[data-tag="debugging"]{ color: #E2685E; border-color: rgba(226,104,94,0.35); }
-  .tag[data-tag="ci"] .icon svg, .tag[data-tag="debugging"] .icon svg{ color: #E2685E; }
-  .tag[data-tag="postgres"]{ color: #5FBF88; border-color: rgba(95,191,136,0.35); }
-  .tag[data-tag="postgres"] .icon svg{ color: #5FBF88; }
-  .tag[data-tag="api"]{ color: #7C9EFF; border-color: rgba(124,158,255,0.35); }
-  .tag[data-tag="api"] .icon svg{ color: #7C9EFF; }
-  .file{ gap: 8px; }
-  .file .icon{ margin-right: -2px; }
-  .file.active .ext{ color: var(--accent); }
-  .file .ext{ color: var(--muted-dim); }
-  .file .hint{ color: var(--muted-dim); font-size: 11px; margin-left: 4px; }
+.tooltip{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+.tooltipArrow{
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
