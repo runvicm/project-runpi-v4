@@ -13,7 +13,7 @@ export default function Header({ opened, toggle }: HeaderProps) {
     <Group align="center" justify="space-between" className={classes.header}>
       <Group>
         <Image src="/pr-logo.svg" alt="Logo" w={40} h={40} />
-        <Text className={classes.prompt}>
+        <Text className={classes.prompt} visibleFrom="md">
           <Text span className={classes.user}>{SITE_CONFIG.title}</Text>:<Text span className={classes.path}>~</Text>$ tail -f log<Text span className={classes.cursor}></Text>
         </Text>
       </Group>

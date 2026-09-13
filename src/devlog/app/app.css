@@ -1,7 +1,7 @@
 @import "tailwindcss" source(".");
 
 :root {
- --bg: #F7F8FA;
+  --bg: #F7F8FA;
   --panel: #FFFFFF;
   --border: #E1E4EA;
   --text: #1B1E27;
@@ -17,7 +17,7 @@
   --bg: #0F1115;
   --panel: #14161C;
   --border: #262B36;
-  --text: #DADEE6;
+  --text: #e6dada;
   --muted: #7B8496;
   --muted-dim: #545C6E;
   --accent: #7C9EFF;
@@ -31,6 +31,8 @@
   Global color override
 */
 :root[data-mantine-color-scheme='light'] {
+  --mantine-color-body: var(--bg); 
+  --mantine-color-text: var(--text);
   
 }
 
