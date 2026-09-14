@@ -1,0 +1,128 @@
+[
+  {
+    "id": "1",
+    "entry_id": "1",
+    "tag_id": "1",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "2",
+    "entry_id": "2",
+    "tag_id": "2",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "3",
+    "entry_id": "3",
+    "tag_id": "1",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "4",
+    "entry_id": "3",
+    "tag_id": "3",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "5",
+    "entry_id": "4",
+    "tag_id": "3",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "6",
+    "entry_id": "4",
+    "tag_id": "1",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "7",
+    "entry_id": "5",
+    "tag_id": "4",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "8",
+    "entry_id": "5",
+    "tag_id": "5",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "9",
+    "entry_id": "6",
+    "tag_id": "6",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "10",
+    "entry_id": "6",
+    "tag_id": "7",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "11",
+    "entry_id": "6",
+    "tag_id": "8",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "12",
+    "entry_id": "7",
+    "tag_id": "1",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "13",
+    "entry_id": "7",
+    "tag_id": "3",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "14",
+    "entry_id": "8",
+    "tag_id": "2",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "15",
+    "entry_id": "8",
+    "tag_id": "9",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "16",
+    "entry_id": "9",
+    "tag_id": "6",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "17",
+    "entry_id": "9",
+    "tag_id": "5",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": "18",
+    "entry_id": "9",
+    "tag_id": "7",
+    "created_at": null,
+    "updated_at": null
+  }
+]

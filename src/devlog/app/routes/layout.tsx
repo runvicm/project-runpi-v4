@@ -1,4 +1,4 @@
-import { AppShell, Burger, Group, Image, Paper, Text } from "@mantine/core";
+import { AppShell, Paper, type TreeNodeData } from "@mantine/core";
 import { useDisclosure, useElementSize } from "@mantine/hooks";
 import { env } from "cloudflare:workers";
 import { Outlet } from "react-router";
@@ -7,17 +7,43 @@ import Navbar from "~/components/Navbar";
 import Status from "~/components/Status";
 
 
+export interface DevlogTreeResponse {
+  count: number;
+  tree: TreeNodeData[];
+}
 
 
 export function loader() {
   const API_URL = env.API_URL;
 
+  // Today Status
   const message = fetch(`${API_URL}/api/devlog/status`)
-  .then((res) => res.json()); // no await! use append
+    .then((res) => res.json());
 
-  return { message };
+  // Side NavBar
+const devlog = fetch(`${API_URL}/api/devlog/tree`)
+  .then((res) => {
+    console.log("TREE FETCH FIRED", new Date().toISOString());
+    return res.json() as Promise<DevlogTreeResponse>;
+  });
+
+  // Filter the data
+  const tree = devlog.then((data) => data.tree);
+  const count = devlog.then((data) => data.count);
+
+  // List fo the devlog
+  const entries = fetch(`${API_URL}/api/devlog/entries`)
+    .then((res) => res.json());
+
+  // Retunf to be use my useLoaderData()
+  return { message, tree, count, entries };
 }
 
+
+
+export function shouldRevalidate() { 
+  return false;
+}
 
 
 export default function Layout() {

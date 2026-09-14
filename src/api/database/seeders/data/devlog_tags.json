@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "name": "production",
+    "slug": "prod",
+    "created_at": "2026-02-07 10:11:26",
+    "updated_at": "2026-02-07 10:11:26"
+  },
+  {
+    "id": "2",
+    "name": "refactor",
+    "slug": "ref",
+    "created_at": "2026-02-08 07:54:37",
+    "updated_at": "2026-02-08 07:54:37"
+  },
+  {
+    "id": "3",
+    "name": "live",
+    "slug": "live",
+    "created_at": "2026-02-10 08:48:23",
+    "updated_at": "2026-02-10 08:48:23"
+  },
+  {
+    "id": "4",
+    "name": "UI",
+    "slug": "ui",
+    "created_at": "2026-02-14 04:11:00",
+    "updated_at": "2026-02-14 04:11:00"
+  },
+  {
+    "id": "5",
+    "name": "Frontend",
+    "slug": "front",
+    "created_at": "2026-02-14 04:11:22",
+    "updated_at": "2026-02-14 04:11:22"
+  },
+  {
+    "id": "6",
+    "name": "development",
+    "slug": "dev",
+    "created_at": "2026-02-17 11:44:07",
+    "updated_at": "2026-02-17 11:44:07"
+  },
+  {
+    "id": "7",
+    "name": "infrastructure",
+    "slug": "infra",
+    "created_at": "2026-02-17 11:45:35",
+    "updated_at": "2026-02-17 11:45:35"
+  },
+  {
+    "id": "8",
+    "name": "server",
+    "slug": "serv",
+    "created_at": "2026-02-17 11:45:52",
+    "updated_at": "2026-02-17 11:45:52"
+  },
+  {
+    "id": "9",
+    "name": "backend",
+    "slug": "backend",
+    "created_at": "2026-04-02 02:42:59",
+    "updated_at": "2026-04-02 02:42:59"
+  }
+]
