@@ -18,64 +18,66 @@ class DevlogController extends Controller
 
     public function index()
     {
-        $entries = DevlogEntry::with('tags')
+        $devlogs = DevlogEntry::with('tags')
             ->where(['status' => 'published'])
             ->orderBy('published_at', 'desc')
-            ->get()
-            ->map(fn($entry) => [
-                'title' => ucwords($entry->title),
-                'label' => $entry->nav_label,
-                'slug' => $entry->slug,
-                'overview' => $entry->overview,
-                'published_at' => $entry->published_at->format('M d, Y'),
-                'view_count' => $entry->view_count,
-                'tags' => $entry->tags->map(fn($tag) => ['slug' => $tag->slug]),
-            ]);
+            ->paginate(6);
 
-        return response()->json($entries);
+
+        $devlogs->through(fn($entry) => [
+            'title' => ucwords($entry->title),
+            'label' => $entry->nav_label,
+            'slug' => $entry->slug,
+            'overview' => $entry->overview,
+            'published_at' => $entry->published_at->format('M d, Y'),
+            'view_count' => $entry->view_count,
+            'tags' => $entry->tags->map(fn($tag) => ['slug' => $tag->slug]),
+        ]);
+
+        return response()->json($devlogs);
     }
 
 
     public function show(string $slug)
     {
-        $log  = DevlogEntry::where('slug', $slug)->with('tags')->firstOrFail();
+        $devlog  = DevlogEntry::where('slug', $slug)->with('tags')->firstOrFail();
 
-        $logData = [
-            'title' => ucwords($log->title),
-            'overview' => $log->overview,
-            'content' => $log->content,
-            'published_at' => $log->published_at->format('M d, Y'),
-            'view_count' => $log->view_count,
-            'tags' => $log->tags->map(fn($tag) => ['slug' => $tag->slug]),
+        $devlogData = [
+            'title' => ucwords($devlog->title),
+            'overview' => $devlog->overview,
+            'content' => $devlog->content,
+            'published_at' => $devlog->published_at->format('M d, Y'),
+            'view_count' => $devlog->view_count,
+            'tags' => $devlog->tags->map(fn($tag) => ['slug' => $tag->slug]),
         ];
 
-        return response()->json($logData);
+        return response()->json($devlogData);
     }
 
 
     public function tree()
     {
 
-        $entries = DevlogEntry::query()
+        $devlogs = DevlogEntry::query()
             ->select(['id', 'slug', 'nav_label', 'published_at'])
             ->where('status', 'published')
             ->whereNotNull('published_at')
             ->orderBy('published_at', 'desc')
             ->get();
 
-        $tree = $entries
-            ->groupBy(fn($entry) => $entry->published_at->format('Y'))
+        $tree = $devlogs
+            ->groupBy(fn($devlog) => $devlog->published_at->format('Y'))
             ->map(function ($yearEntries, $year) {
                 $months = $yearEntries
-                    ->groupBy(fn($entry) => $entry->published_at->format('F'))
+                    ->groupBy(fn($devlog) => $devlog->published_at->format('F'))
                     ->map(function ($monthEntries, $month) use ($year) {
                         return [
                             'value' => "{$year}/{$month}",
                             'label' => $month,
                             'children' => $monthEntries
-                                ->map(fn($entry) => [
-                                    'value' => $entry->slug,
-                                    'label' => "{$entry->nav_label}.md",
+                                ->map(fn($devlog) => [
+                                    'value' => $devlog->slug,
+                                    'label' => "{$devlog->nav_label}.md",
                                 ])
                                 ->values(),
                         ];
@@ -91,7 +93,7 @@ class DevlogController extends Controller
             ->values();
 
         return response()->json([
-            'count' => $entries->count(),
+            'count' => $devlogs->count(),
             'tree' => $tree,
         ]);
     }
