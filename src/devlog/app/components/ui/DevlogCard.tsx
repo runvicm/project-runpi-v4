@@ -21,7 +21,7 @@ export default function DevlogCard( { devlog }: { devlog: DevLogProps } ) {
   return (
    <Card
       component={Link}
-      to={`/view/`}
+      to={`/view/${devlog.slug}`}
       className={classes.card}
       radius="md"
       withBorder

@@ -1,15 +1,11 @@
-import { Center, Container, Group, Pagination, SimpleGrid, Text } from "@mantine/core";
+import { Container, Group, Pagination, SimpleGrid, Text } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { env } from "cloudflare:workers";
 import { Suspense } from "react";
 import { Await, useLoaderData, useSearchParams, type LoaderFunctionArgs } from "react-router";
 import DevlogCard, { type DevLogProps } from "~/components/ui/DevlogCard";
 import DevlogGridSkeleton from "~/components/ui/DevlogGridSkeleton";
-import DevlogCardSkeleton from "~/components/ui/DevlogGridSkeleton";
 import classes from "~/themes/PostCard.module.css"
-
-
-
 
 
 interface DevlogDataProps {
@@ -23,7 +19,6 @@ export function loader({request}: LoaderFunctionArgs) {
   const API_URL = env.API_URL;
   const url = new URL(request.url);
   const page = url.searchParams.get("page") || 1;
-
 
   // List of devlog post
  const devlogData = fetch(`${API_URL}/api/devlog/entries?page=${page}`)
@@ -40,7 +35,6 @@ export function loader({request}: LoaderFunctionArgs) {
 }
 
 
-
 export default function Index() {
   const { devlogData } = useLoaderData<{ devlogData: DevlogDataProps }>();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,7 +42,6 @@ export default function Index() {
   const handlePageChange = (newPage: number) => {
     setSearchParams({ page: String(newPage) });
   };
-
 
   return (
     <Suspense fallback={<DevlogGridSkeleton />}>

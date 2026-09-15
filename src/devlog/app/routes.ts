@@ -4,7 +4,7 @@ export default [
 
   layout("routes/layout.tsx", [
     index("routes/index.tsx"),
-    route("/view/:slug", "routes/article.tsx"),
+    route("/view/:slug", "routes/show.tsx"),
   ]),
 
 ] satisfies RouteConfig;
