@@ -1,10 +1,11 @@
-import { Anchor, Badge, Box, Card, Container, Group, Text, Title, Typography } from "@mantine/core";
+import { Anchor, Badge, Container, Group, Text, Title, Typography } from "@mantine/core";
 import { IconArrowLeft, IconCalendar, IconEye, IconMessageCircle } from "@tabler/icons-react";
 import { env } from "cloudflare:workers";
 import { Suspense } from "react";
-import { Await, Link, useLoaderData, useParams, type LoaderFunctionArgs } from "react-router";
+import { Await, Link, useLoaderData, type LoaderFunctionArgs } from "react-router";
+import DevlogViewSkeleton from "~/components/ui/DevlogViewSkeleton";
 import classes from "~/themes/Show.module.css"
-
+import { getTagColor } from "~/utils/getTagColor";
 
 
 export interface DevlogViewProps {
@@ -21,7 +22,6 @@ export interface DevlogViewProps {
 }
 
 
-
 export function loader({ params }: LoaderFunctionArgs) {
   const API_URL = env.API_URL;
   const { slug } = params;
@@ -34,11 +34,10 @@ export function loader({ params }: LoaderFunctionArgs) {
 
 
 export default function Show() {
-    const { devlog } = useLoaderData<{devlog: DevlogViewProps}>();
+  const { devlog } = useLoaderData<{devlog: DevlogViewProps}>();
   
   return (
-
-    <Suspense>
+    <Suspense fallback={<DevlogViewSkeleton />}>
       <Await
         resolve={devlog}
       >
@@ -54,11 +53,11 @@ export default function Show() {
                 <IconCalendar size={12.5} color="var(--muted-dim)" />
                 <Text size="xs" c="dimmed" className={classes.mono}>{devlog.published_at}</Text>
               </Group>
-              {/* {devlog.tags.map((tag) => (
-                <Badge key={tag} variant="outline" color={tagColor[tag] ?? 'gray'} className={classes.mono}>
-                  {tag}
+              {devlog.tags.map((tag) => (
+                <Badge key={tag.slug} variant="outline" color={getTagColor(tag.slug)} className={classes.mono}>
+                  {tag.slug}
                 </Badge>
-              ))} */}
+              ))}
             </Group>
 
             <Title order={1} className={classes.title}>{devlog.title}</Title>

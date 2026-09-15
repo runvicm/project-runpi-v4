@@ -2,6 +2,7 @@ import { AppShell, Paper, type TreeNodeData } from "@mantine/core";
 import { useDisclosure, useElementSize } from "@mantine/hooks";
 import { env } from "cloudflare:workers";
 import { Outlet } from "react-router";
+import Footer from "~/components/Footer";
 import Header from "~/components/Header";
 import Navbar from "~/components/Navbar";
 import Status from "~/components/Status";
@@ -48,17 +49,18 @@ export function shouldRevalidate() {
 
 export default function Layout() {
   const [opened, { toggle }] = useDisclosure();
-  const { ref, height } = useElementSize();
+  const { ref: headerRef, height: headerHeight } = useElementSize();
+  const { ref: footerRef, height: footerHeight } = useElementSize();
 
   return (
     <AppShell
-      header={{ height: height }}
-      footer={{ height: 60 }}
+      header={{ height: headerHeight }}
+      footer={{ height: footerHeight }}
       navbar={{ width: 300, breakpoint: 'md', collapsed: { mobile: !opened } }}
       padding="md"
     >
       <AppShell.Header>
-        <div ref={ref}>
+        <div ref={headerRef}>
           <Header opened={opened} toggle={toggle} />
           <Paper visibleFrom="md">
             <Status />
@@ -73,7 +75,11 @@ export default function Layout() {
         <Outlet />
       </AppShell.Main>
      
-      <AppShell.Footer p="md">Footer</AppShell.Footer>
+      <AppShell.Footer>
+        <div ref={footerRef}>
+          <Footer />
+        </div>
+      </AppShell.Footer>
     </AppShell>
   )
 }

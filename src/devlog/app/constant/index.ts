@@ -22,38 +22,3 @@ export const NAV_LINKS = [
     href: '/about',
   }
 ]
-
-
-
-const TREE_DATA: TreeNodeData[] = [
-  {
-    value: '2026',
-    label: '2026',
-    children: [
-      {
-        value: '2026/September',
-        label: 'September',
-        children: [
-          { value: 'e1', label: 'WASM boundary.md' },
-        ],
-      },
-      {
-        value: '2026/August',
-        label: 'August',
-        children: [
-          { value: 'e2', label: 'Queue refactor.md' },
-          { value: 'e3', label: 'Flaky CI test.md' },
-        ],
-      },
-      {
-        value: '2026/July',
-        label: 'July',
-        children: [
-          { value: 'e4', label: 'DB migration.md' },
-          { value: 'e5', label: 'Rate limits.md' },
-        ],
-      },
-    ],
-  },
-];
-

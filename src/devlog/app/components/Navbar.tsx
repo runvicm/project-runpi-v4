@@ -79,9 +79,9 @@ function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePaylo
          offset={5}
          classNames={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}
        >
-            <span className={classes.filename}>
-              {typeof node.label === 'string' ? node.label.replace(/\.md$/, '') : node.label}
-            </span>
+          <span className={classes.filename}>
+            {typeof node.label === 'string' ? node.label.replace(/\.md$/, '') : node.label}
+          </span>
         </Tooltip>
             <span className={classes.ext}>.md</span>
           </NavLink>

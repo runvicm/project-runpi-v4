@@ -15,6 +15,8 @@ interface DevlogDataProps {
 }
 
 
+
+
 export function loader({request}: LoaderFunctionArgs) {
   const API_URL = env.API_URL;
   const url = new URL(request.url);

@@ -8,7 +8,7 @@ export default function ThemeToggle() {
     <ActionIcon
       onClick={() => toggleColorScheme()}
       variant="default"
-      size="lg"
+      size="md"
     >
       {colorScheme === 'light' ?
         <IconSun style={{ width: '70%', height: '70%' }} /> :
