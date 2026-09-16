@@ -5,7 +5,9 @@ import { Suspense } from "react";
 import { Await, useLoaderData, useSearchParams, type LoaderFunctionArgs } from "react-router";
 import DevlogCard, { type DevLogProps } from "~/components/ui/DevlogCard";
 import DevlogGridSkeleton from "~/components/ui/DevlogGridSkeleton";
+import { OG_DESCRIPTION, SITE_CONFIG } from "~/constant";
 import classes from "~/themes/PostCard.module.css"
+import { createMeta } from "~/utils/seo";
 
 
 interface DevlogDataProps {
@@ -15,6 +17,13 @@ interface DevlogDataProps {
 }
 
 
+export function meta() {
+  return createMeta({
+    title: `${SITE_CONFIG.title} - Homepage`,
+    description: `${OG_DESCRIPTION}`,
+    type: "website"
+  });
+}
 
 
 export function loader({request}: LoaderFunctionArgs) {
@@ -22,7 +31,7 @@ export function loader({request}: LoaderFunctionArgs) {
   const url = new URL(request.url);
   const page = url.searchParams.get("page") || 1;
 
-  // List of devlog post
+  // List of devlog post with pagination
  const devlogData = fetch(`${API_URL}/api/devlog/entries?page=${page}`)
   .then((res) => res.json() as Promise<{ data: DevLogProps[]; current_page: number; last_page: number; }>)
   .then((result): DevlogDataProps => {

@@ -6,6 +6,8 @@ import { Await, Link, useLoaderData, type LoaderFunctionArgs } from "react-route
 import DevlogViewSkeleton from "~/components/ui/DevlogViewSkeleton";
 import classes from "~/themes/Show.module.css"
 import { getTagColor } from "~/utils/getTagColor";
+import { createMeta } from "~/utils/seo";
+import type { Route } from "./+types/show";
 
 
 export interface DevlogViewProps {
@@ -26,10 +28,22 @@ export function loader({ params }: LoaderFunctionArgs) {
   const API_URL = env.API_URL;
   const { slug } = params;
 
-  const devlog = fetch(`${API_URL}/api/devlog/entries/${slug}`)
-    .then((res) => res.json());
+  return fetch(`${API_URL}/api/devlog/entries/${slug}`)
+    .then((res) => res.json() as Promise<DevlogViewProps>)
+    .then((devlog) => ({ devlog }));
+}
 
-  return { devlog };
+
+export function meta({ loaderData }: Route.MetaArgs) {
+ const { devlog } = loaderData;
+
+  return createMeta({
+    title: devlog.title,
+    description: devlog.overview,
+    type: "article",
+    url: `https://devlog.projectrunpi.com/view/${devlog.slug}`,
+    publishedAt: devlog.published_at, // reuse the same help
+  });
 }
 
 
@@ -79,7 +93,7 @@ export default function Show() {
             </Group>
 
 
-            {/* TO DO: Will add this later */}
+            {/* TODO: Will add this later */}
             {/* <Box className={classes.comments}>
               <Text fw={600} mb="sm">
                 Comments <Text span className={classes.dimmed} fw={400}>(0)</Text>
@@ -91,19 +105,8 @@ export default function Show() {
 
 
           </Container>
-
-
-
-
         )}
-
-
       </Await>
     </Suspense>
-
-
-
-
-
   )
 }

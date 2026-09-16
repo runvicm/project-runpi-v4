@@ -5,6 +5,8 @@ export default [
   layout("routes/layout.tsx", [
     index("routes/index.tsx"),
     route("/view/:slug", "routes/show.tsx"),
+
+    route("/sitemap.xml", "routes/sitemap.tsx")
   ]),
 
 ] satisfies RouteConfig;
