@@ -15,6 +15,7 @@ Route::middleware('throttle:30,1')->group(function () {
         Route::get('entries', [DevlogController::class, 'index'])->name('entries.index');
         Route::get('entries/{entry:slug}', [DevlogController::class, 'show'])->name('entries.show');
         Route::get('tree', [DevlogController::class, 'tree'])->name('entries.tree');
+        Route::post('entries/{entry:slug}', [DevlogController::class, 'addView']);
     });
 });
 

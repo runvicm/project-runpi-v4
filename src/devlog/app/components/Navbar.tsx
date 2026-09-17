@@ -70,21 +70,24 @@ function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePaylo
       ) : (
         
         <NavLink
-            to={`/view/${node.value}`}
-            className={({ isActive }) => `${classes.fileLink} ${isActive ? classes.active : ''}`}
-            >
-        <Tooltip
-         label={node.label}
-         position="bottom"
-         offset={5}
-         classNames={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}
-       >
-          <span className={classes.filename}>
-            {typeof node.label === 'string' ? node.label.replace(/\.md$/, '') : node.label}
-          </span>
-        </Tooltip>
+         viewTransition
+          to={`/view/${node.value}`}
+          className={({ isActive, isPending }) =>
+            `${classes.fileLink} ${isActive ? classes.active : ''} ${isPending ? classes.pending : ''}`
+          }
+        >
+          <Tooltip
+            label={node.label}
+            position="bottom"
+            offset={5}
+            classNames={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}
+          >
+            <span className={classes.filename}>
+              {typeof node.label === 'string' ? node.label.replace(/\.md$/, '') : node.label}
+            </span>
+          </Tooltip>
             <span className={classes.ext}>.md</span>
-          </NavLink>
+        </NavLink>
       )}
     </Group>
   );

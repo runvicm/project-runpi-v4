@@ -1,8 +1,8 @@
 import { Anchor, Badge, Container, Group, Text, Title, Typography } from "@mantine/core";
 import { IconArrowLeft, IconCalendar, IconEye, IconMessageCircle } from "@tabler/icons-react";
 import { env } from "cloudflare:workers";
-import { Suspense } from "react";
-import { Await, Link, useLoaderData, type LoaderFunctionArgs } from "react-router";
+import { Suspense, useEffect } from "react";
+import { Await, Link, useLoaderData, useParams, type LoaderFunctionArgs } from "react-router";
 import DevlogViewSkeleton from "~/components/ui/DevlogViewSkeleton";
 import classes from "~/themes/Show.module.css"
 import { getTagColor } from "~/utils/getTagColor";
@@ -17,20 +17,22 @@ export interface DevlogViewProps {
   content: string;
   view_count: number;
   published_at: string;
+  date_iso: string;
   tags: {
     slug: string;
   }[];
   url: string;
 }
 
-
-export function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const API_URL = env.API_URL;
+
   const { slug } = params;
 
   return fetch(`${API_URL}/api/devlog/entries/${slug}`)
     .then((res) => res.json() as Promise<DevlogViewProps>)
     .then((devlog) => ({ devlog }));
+
 }
 
 
@@ -42,16 +44,31 @@ export function meta({ loaderData }: Route.MetaArgs) {
     description: devlog.overview,
     type: "article",
     url: `https://devlog.projectrunpi.com/view/${devlog.slug}`,
-    publishedAt: devlog.published_at, // reuse the same help
+    publishedAt: devlog.date_iso,
   });
 }
 
 
 export default function Show() {
   const { devlog } = useLoaderData<{devlog: DevlogViewProps}>();
+  const API_URL = import.meta.env.VITE_API_URL;
+  const { slug } = useParams();
+
+  /**
+   * Add view count
+   * Prevent spam
+   */
+  useEffect(() => {
+    const key = `viewed:${slug}`;
+    if (sessionStorage.getItem(key)) return;
+
+    fetch(`${API_URL}/api/devlog/entries/${slug}`, { method: 'POST' })
+      .then(() => sessionStorage.setItem(key, '1'))
+      .catch(() => {});
+  },[]);
   
   return (
-    <Suspense fallback={<DevlogViewSkeleton />}>
+    <Suspense key={devlog.slug}  fallback={<DevlogViewSkeleton />}>
       <Await
         resolve={devlog}
       >
@@ -62,7 +79,7 @@ export default function Show() {
               <IconArrowLeft size={12} /> all entries
             </Anchor>
 
-            <Group gap="md" mb="md">
+            <Group gap="sm" mb="md">
               <Group gap={5}>
                 <IconCalendar size={12.5} color="var(--muted-dim)" />
                 <Text size="xs" c="dimmed" className={classes.mono}>{devlog.published_at}</Text>
@@ -110,3 +127,5 @@ export default function Show() {
     </Suspense>
   )
 }
+
+

@@ -29,7 +29,8 @@ class DevlogController extends Controller
             'label' => $entry->nav_label,
             'slug' => $entry->slug,
             'overview' => $entry->overview,
-            'published_at' => $entry->published_at->format('M d, Y'),
+            'published_at' => $entry->published_at->diffForHumans(),
+            'date_iso' => $entry->published_at->format('Y-m-d'),
             'view_count' => $entry->view_count,
             'tags' => $entry->tags->map(fn($tag) => ['slug' => $tag->slug]),
         ]);
@@ -46,7 +47,8 @@ class DevlogController extends Controller
             'title' => ucwords($devlog->title),
             'overview' => $devlog->overview,
             'content' => $devlog->content,
-            'published_at' => $devlog->published_at->format('M d, Y'),
+            'published_at' => $devlog->published_at->diffForHumans(),
+            'date_iso' => $devlog->published_at->format('Y-m-d'),
             'view_count' => $devlog->view_count,
             'tags' => $devlog->tags->map(fn($tag) => ['slug' => $tag->slug]),
         ];
@@ -96,5 +98,12 @@ class DevlogController extends Controller
             'count' => $devlogs->count(),
             'tree' => $tree,
         ]);
+    }
+
+
+    public function addView(string $slug)
+    {
+        $log  = DevlogEntry::where('slug', $slug)->firstOrFail();
+        $log->increment('view_count');
     }
 }

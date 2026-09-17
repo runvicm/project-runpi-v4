@@ -22,8 +22,8 @@ export default function Header({ opened, toggle }: HeaderProps) {
 
         <Group gap="lg" visibleFrom="md" className={classes.menulink}>
           <Anchor href="/" unstyled>Home</Anchor>
-          <Anchor href="/about" unstyled>About</Anchor>
-          <Anchor href="/contact" unstyled>Contact</Anchor>
+          {/* <Anchor href="/about" unstyled>About</Anchor>
+          <Anchor href="/contact" unstyled>Contact</Anchor> */}
         </Group>
 
         {/* Toggle to 'Light' or 'Dark' */}
