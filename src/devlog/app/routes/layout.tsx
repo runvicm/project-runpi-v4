@@ -6,13 +6,12 @@ import Footer from "~/components/Footer";
 import Header from "~/components/Header";
 import Navbar from "~/components/Navbar";
 import Status from "~/components/Status";
-
+import { NavCloseProvider } from "~/context/NavCloseContext";
 
 export interface DevlogTreeResponse {
   count: number;
-  tree: TreeNodeData[];
+  devlogTree: TreeNodeData[];
 }
-
 
 export function loader() {
   const API_URL = env.API_URL;
@@ -29,7 +28,7 @@ const devlog = fetch(`${API_URL}/api/devlog/tree`)
   });
 
   // Filter the data
-  const tree = devlog.then((data) => data.tree);
+  const devlogTree = devlog.then((data) => data.devlogTree);
   const count = devlog.then((data) => data.count);
 
   // List fo the devlog
@@ -37,9 +36,8 @@ const devlog = fetch(`${API_URL}/api/devlog/tree`)
     .then((res) => res.json());
 
   // Retunf to be use my useLoaderData()
-  return { message, tree, count, entries };
+  return { message, devlogTree, count, entries };
 }
-
 
 
 export function shouldRevalidate() { 
@@ -48,7 +46,7 @@ export function shouldRevalidate() {
 
 
 export default function Layout() {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle, close }] = useDisclosure();
   const { ref: headerRef, height: headerHeight } = useElementSize();
   const { ref: footerRef, height: footerHeight } = useElementSize();
 
@@ -68,9 +66,13 @@ export default function Layout() {
         </div>
       </AppShell.Header>
 
-      <AppShell.Navbar p="md">
-        <Navbar />
-      </AppShell.Navbar>
+      
+      <NavCloseProvider value={close}>
+        <AppShell.Navbar p="md">
+          <Navbar />
+        </AppShell.Navbar>
+      </NavCloseProvider>
+
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>

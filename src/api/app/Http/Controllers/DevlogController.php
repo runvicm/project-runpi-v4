@@ -57,6 +57,11 @@ class DevlogController extends Controller
     }
 
 
+    /**
+     * Api to be use for Mantine Tree
+     * 
+     * return Mantine tree
+     */
     public function tree()
     {
 
@@ -96,7 +101,7 @@ class DevlogController extends Controller
 
         return response()->json([
             'count' => $devlogs->count(),
-            'tree' => $tree,
+            'devlogTree' => $tree,
         ]);
     }
 

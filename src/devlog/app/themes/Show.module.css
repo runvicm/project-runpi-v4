@@ -27,11 +27,9 @@
 .body{
   font-size: 15.5px;
   line-height: 1.75;
-  color: #C4C9D4;
+  color: var(--text);
   margin: 0 0 16px;
 }
-
-
 
 .postStats{
   padding-top: 4px;
@@ -46,6 +44,7 @@
   border-top: 1px solid var(--border);
   border-radius: 0;
 }
+
 .commentsEmpty{
   font-family: var(--sans);
   font-size: 13.5px;
@@ -57,15 +56,9 @@
   text-align: center;
 }
 
-
 .dimmed{ color: var(--muted-dim); }
 
-
-
-
-
-
-
+/* --- Body Global Elements --- */
 .body :global(h1),
 .body :global(h2),
 .body :global(h3){
@@ -82,12 +75,12 @@
 .body :global(p){
   font-size: 15.5px;
   line-height: 1.75;
-  color: #C4C9D4;   /* your old text-gray-300 equivalent */
+  color: var(--text);
   margin: 0 0 16px;
 }
 
 .body :global(strong){ color: var(--text); font-weight: 600; }
-.body :global(em){ color: #C4C9D4; }
+.body :global(em){ color: var(--text); }
 
 .body :global(a){
   color: var(--accent);
@@ -95,14 +88,47 @@
   text-decoration-color: var(--accent-dim);
 }
 
-.body :global(ul),
-.body :global(ol){
+/* --- Lists & Markers --- */
+.body :global(ul){
+  list-style: disc;
   margin: 0 0 16px;
   padding-left: 22px;
-  color: #C4C9D4;
+  color: var(--text);
 }
-.body :global(li){ margin-bottom: 6px; line-height: 1.7; }
+.body :global(ol){
+  list-style: decimal;
+  margin: 0 0 16px;
+  padding-left: 22px;
+  color: var(--text);
+}
+.body :global(li){ 
+  margin-bottom: 6px; 
+  line-height: 1.7; 
+}
+.body :global(li)::marker{ color: var(--muted-dim); }
 
+.body :global(li ul),
+.body :global(li ol){
+  margin: 6px 0 0;
+}
+
+/* --- Task Lists --- */
+.body :global(ul[data-type="taskList"]){
+  list-style: none;
+  padding-left: 0;
+}
+.body :global(li[data-type="taskItem"]){
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.body :global(li[data-type="taskItem"] input[type="checkbox"]){
+  margin-top: 5px;
+  accent-color: var(--accent);
+}
+
+/* --- Blockquotes & Code --- */
 .body :global(blockquote){
   border-left: 3px solid var(--accent-dim);
   margin: 20px 0;
@@ -135,6 +161,7 @@
   color: var(--text);
 }
 
+/* --- Inline Marks & HR --- */
 .body :global(hr){
   border: none;
   border-top: 1px solid var(--border);
@@ -148,48 +175,6 @@
   margin: 12px 0;
 }
 
-
-
-.body :global(ul){
-  list-style: disc;
-  margin: 0 0 16px;
-  padding-left: 22px;
-  color: #C4C9D4;
-}
-.body :global(ol){
-  list-style: decimal;
-  margin: 0 0 16px;
-  padding-left: 22px;
-  color: #C4C9D4;
-}
-.body :global(li){ margin-bottom: 6px; line-height: 1.7; }
-.body :global(li)::marker{ color: var(--muted-dim); }
-
-
-
-/* --- nested lists shouldn't double up on spacing --- */
-.body :global(li ul),
-.body :global(li ol){
-  margin: 6px 0 0;
-}
-
-/* --- task / checklist items (Tiptap TaskList) --- */
-.body :global(ul[data-type="taskList"]){
-  list-style: none;
-  padding-left: 0;
-}
-.body :global(li[data-type="taskItem"]){
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-.body :global(li[data-type="taskItem"] input[type="checkbox"]){
-  margin-top: 5px;
-  accent-color: var(--accent);
-}
-
-/* --- inline marks --- */
 .body :global(u){ text-decoration-color: var(--accent-dim); }
 .body :global(s), .body :global(del){ color: var(--muted-dim); }
 .body :global(mark){
@@ -200,7 +185,7 @@
 }
 .body :global(sub), .body :global(sup){ font-size: 0.75em; }
 
-/* --- tables --- */
+/* --- Tables --- */
 .body :global(table){
   width: 100%;
   border-collapse: collapse;
@@ -218,9 +203,9 @@
   color: var(--text);
   font-weight: 600;
 }
-.body :global(td){ color: #C4C9D4; }
+.body :global(td){ color: var(--text); }
 
-/* --- collapsible sections (details/summary) --- */
+/* --- Collapsible Sections --- */
 .body :global(details){
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -233,6 +218,6 @@
   font-weight: 600;
 }
 
-/* --- first/last child shouldn't add extra edge spacing --- */
+/* --- Edge Spacing --- */
 .body > :global(*:first-child){ margin-top: 0; }
 .body > :global(*:last-child){ margin-bottom: 0; }

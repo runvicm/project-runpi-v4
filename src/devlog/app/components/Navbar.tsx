@@ -1,13 +1,14 @@
-import { Group, Paper, Text, Tooltip, Tree, type RenderTreeNodePayload } from '@mantine/core';
+import { getTreeExpandedState, Group, Paper, Text, Tooltip, Tree, useTree, type RenderTreeNodePayload, type TreeNodeData } from '@mantine/core';
 import { IconFile, IconFolder, IconFolderOpen, IconHome } from '@tabler/icons-react';
 import { Suspense } from 'react';
 import { Await, NavLink, useLoaderData } from 'react-router';
+import { useNavClose } from '~/context/NavCloseContext';
 import type { DevlogTreeResponse } from '~/routes/layout';
 import classes from "~/themes/Navbar.module.css"
 
 
 export default function Navbar() {
-  const { tree, count } = useLoaderData<DevlogTreeResponse>();
+  const { devlogTree, count } = useLoaderData<DevlogTreeResponse>();
   
   return (
     <Paper className={classes.shell}>
@@ -38,23 +39,35 @@ export default function Navbar() {
 
       <Suspense fallback={<Text>LOADING...</Text>}>
         <Await
-          resolve={tree}
+          resolve={devlogTree}
           errorElement={<Text className={classes.text}>Failed to load</Text>}
-          children={(tree) => <Tree
-            data={tree ?? []} 
-            renderNode={(payload) => <Leaf {...payload} />}
-            classNames={{ root: classes.root, node: classes.node, subtree: classes.subtree }}
-          />}
-        />
+        >
+          {(resolved) => <DevlogTree data={resolved ?? []} />}
+        </Await>
       </Suspense>
     </Paper>
   )
 }
 
 
+function DevlogTree({ data }: { data: TreeNodeData[] }) {
+  const tree = useTree({
+    initialExpandedState: getTreeExpandedState(data, getLatestExpandedPath(data)),
+  });
+
+  return (
+    <Tree
+      data={data}
+      tree={tree}
+      renderNode={(payload) => <DevlogLeaf {...payload} />}
+      classNames={{ root: classes.root, node: classes.node, subtree: classes.subtree }}
+    />
+  );
+}
 
 
-function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePayload) {
+function DevlogLeaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePayload) {
+  const close = useNavClose();
   return (
     <Group gap={8} wrap="nowrap" {...elementProps} className={classes.node}>
       {hasChildren ? (
@@ -70,8 +83,9 @@ function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePaylo
       ) : (
         
         <NavLink
-         viewTransition
+          viewTransition
           to={`/view/${node.value}`}
+          onClick={close}
           className={({ isActive, isPending }) =>
             `${classes.fileLink} ${isActive ? classes.active : ''} ${isPending ? classes.pending : ''}`
           }
@@ -91,4 +105,14 @@ function Leaf({ node, expanded, hasChildren, elementProps }: RenderTreeNodePaylo
       )}
     </Group>
   );
+}
+
+
+
+
+function getLatestExpandedPath(data: TreeNodeData[]): string[] {
+  if (data.length === 0) return [];
+  const latestYear = data[0];
+  const latestMonth = latestYear.children?.[0];
+  return latestMonth ? [latestYear.value, latestMonth.value] : [latestYear.value];
 }

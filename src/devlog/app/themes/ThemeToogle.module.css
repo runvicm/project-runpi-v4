@@ -1,0 +1,10 @@
+.lightIcon,
+.darkIcon{
+  position: absolute;
+}
+
+.lightIcon{ display: none; }
+.darkIcon{ display: block; }
+
+[data-mantine-color-scheme="light"] .lightIcon{ display: block; }
+[data-mantine-color-scheme="light"] .darkIcon{ display: none; }
