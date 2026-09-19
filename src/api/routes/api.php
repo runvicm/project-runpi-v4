@@ -2,8 +2,28 @@
 
 use App\Http\Controllers\DevlogController;
 use App\Http\Controllers\HomepageController;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    $deployedAt = Carbon::createFromTimestamp((int) file_get_contents(storage_path('deployed_at.txt')));
+
+    $uptimeSeconds = (float) explode(' ', file_get_contents('/proc/uptime'))[0];
+    $serverUptime = \Carbon\CarbonInterval::seconds((int) $uptimeSeconds)->cascade()->forHumans();
+
+    return response()->json([
+        'status' => 'ok',
+        'message' => "hey, this is Project Runpi Api 👋",
+        'time' => now()->toIso8601String(),
+        'timezone' => config('app.timezone'),
+        'deployed_ago' => $deployedAt->diffForHumans(),
+        'server_uptime' => $serverUptime,
+        'php_version' => phpversion(),
+        'laravel_version' => app()->version(),
+        'environment' => app()->environment(),
+        'github' => 'https://github.com/runvicm',
+    ]);
+});
 
 
 Route::middleware('throttle:30,1')->group(function () {

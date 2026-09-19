@@ -23,30 +23,12 @@ export function loader() {
   const API_URL = env.API_URL;
   const API_KEY = env.API_KEY;
 
-  const devlogs = fetch(`${API_URL}/api/homepage/devlog`, {
-    headers: {
-      "Authorization": `Bearer ${API_KEY}`,
-  }})
-  .then((res) => res.json()); // no await! use append
-
+  const devlogs = fetch(`${API_URL}/api/homepage/devlog`)
+    .then((res) => res.json());
+  
   return { devlogs };
 }
 
-export async function action({ request }: ActionFunctionArgs) {
-  const formData = await request.formData();
-  const slug = formData.get("slug") as string;
-  const API_URL = env.API_URL;
-  const API_KEY = env.API_KEY;
- 
-  await fetch(`${API_URL}/api/devlog/view/${slug}`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-    },
-  });
-
-  return null;
-}
 
 export default function Home() {
 

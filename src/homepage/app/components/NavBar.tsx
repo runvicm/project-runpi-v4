@@ -26,7 +26,7 @@ export default function NavBar() {
             
             return (
               <Button
-                component={Link}    // use react router hooks
+                component={Link}
                 key={index}
                 to={path}
                 variant={isActive ? 'activeNav' : 'defaultNav'}

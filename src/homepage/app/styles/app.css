@@ -19,7 +19,7 @@
 }
 
 :root[data-mantine-color-scheme='dark'] {
-  --mantine-color-body: red; 
+  --mantine-color-body:  var(--color-bg); 
   --mantine-color-text: var(--color-text);
 }
 

@@ -162,7 +162,6 @@ function DevlogCard({ log }: { log: DevLogProps }) {
             gap="xs"
             justify="flex-start"
             align="center"
-            onClick={() => fetcher.submit({ slug: log.slug }, { method: "post" })}
           >
             <Text size="sm">Read more</Text>
             <IconArrowRight size={14} />
