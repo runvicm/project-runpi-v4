@@ -56,7 +56,15 @@ export default function Index() {
 
   return (
     <Suspense fallback={<DevlogGridSkeleton />}>
-      <Await resolve={devlogData}>
+      <Await
+        resolve={devlogData}
+         errorElement={
+      <Container size={1180} className={classes.gridwrapper}>
+        <Text c="red">Failed to load devlog entries.</Text>
+      </Container>
+    }
+
+      >
         {(devlogData) => (
           <Container size={1180} className={classes.gridwrapper}>
             <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" verticalSpacing="lg">

@@ -31,12 +31,10 @@ const devlog = fetch(`${API_URL}/api/devlog/tree`)
   const devlogTree = devlog.then((data) => data.devlogTree);
   const count = devlog.then((data) => data.count);
 
-  // List fo the devlog
-  const entries = fetch(`${API_URL}/api/devlog/entries`)
-    .then((res) => res.json());
+
 
   // Retunf to be use my useLoaderData()
-  return { message, devlogTree, count, entries };
+  return { message, devlogTree, count };
 }
 
 

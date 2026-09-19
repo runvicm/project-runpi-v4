@@ -22,8 +22,3 @@ Route::middleware('throttle:30,1')->group(function () {
         Route::post('entries/{entry:slug}', [DevlogController::class, 'addView']);
     });
 });
-
-
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
