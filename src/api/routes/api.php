@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $deployedAt = Carbon::createFromTimestamp((int) file_get_contents(storage_path('deployed_at.txt')));
 
-    $uptimeSeconds = (float) explode(' ', file_get_contents('/proc/uptime'))[0];
-    $serverUptime = \Carbon\CarbonInterval::seconds((int) $uptimeSeconds)->cascade()->forHumans();
+    $containerStartedAt = Carbon::createFromTimestamp(stat('/proc/1')['ctime']);
 
     return response()->json([
         'status' => 'ok',
@@ -17,7 +16,7 @@ Route::get('/', function () {
         'time' => now()->toIso8601String(),
         'timezone' => config('app.timezone'),
         'deployed_ago' => $deployedAt->diffForHumans(),
-        'server_uptime' => $serverUptime,
+        'container_uptime' => $containerStartedAt->diffForHumans(),
         'php_version' => phpversion(),
         'laravel_version' => app()->version(),
         'environment' => app()->environment(),
