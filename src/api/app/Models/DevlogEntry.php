@@ -30,8 +30,8 @@ class DevlogEntry extends Model
         return $this->belongsToMany(
             DevlogTag::class,
             'devlog_entry_tag',
-            'entry_id',  // this model's (DevlogEntry) FK on the pivot
-            'tag_id'     // related model's (DevlogTag) FK on the pivot
+            'entry_id',
+            'tag_id'
         )->withTimestamps();
     }
 }

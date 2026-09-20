@@ -4,7 +4,6 @@ import Devlog from "~/components/Devlog";
 import { createMeta } from "~/utils/seo";
 import { OG_DESCRIPTION, SITE_CONFIG } from "~/constants";
 import { env } from "cloudflare:workers";
-import type { ActionFunctionArgs } from "react-router";
 
 export function meta() {
   return createMeta({

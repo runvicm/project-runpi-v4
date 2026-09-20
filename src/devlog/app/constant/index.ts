@@ -1,5 +1,3 @@
-import type { TreeNodeData } from "@mantine/core";
-
 export const SITE_CONFIG = {
   title: "runpi@devlog",
   description: "A running devlog of self-hosted projects, deployments, and everything in between.",

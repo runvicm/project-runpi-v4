@@ -1,5 +1,5 @@
 import { Badge, Card, Group, Text, Title } from "@mantine/core";
-import { IconArrowRight, IconCalendar, IconEye, IconMessageCircle, IconTag } from "@tabler/icons-react";
+import { IconArrowRight, IconCalendar, IconEye } from "@tabler/icons-react";
 import { Link } from "react-router";
 import classes from "~/themes/PostCard.module.css"
 import { getTagColor } from "~/utils/getTagColor";

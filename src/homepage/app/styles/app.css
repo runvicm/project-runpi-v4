@@ -1,6 +1,5 @@
 @import "tailwindcss" source(".");
 
-
 /* Color Scheme */
 @theme {
   --color-bg: #f8f8f8;

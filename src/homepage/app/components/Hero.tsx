@@ -1,5 +1,5 @@
-import { Box, Button, Container, Flex, Grid, Group, Image, Marquee, Paper, Stack, Text, Title } from '@mantine/core'
-import { IconBrandGithub, IconBrandUpwork, IconCode, IconCodeAi, IconCodeAsterix, IconCodeDots, IconServerSpark } from '@tabler/icons-react';
+import { Box, Button, Container, Grid, Group, Image, Marquee, Paper, Stack, Text, Title } from '@mantine/core'
+import { IconBrandGithub, IconBrandUpwork, IconServerSpark } from '@tabler/icons-react';
 import { SITE_CONFIG } from '~/constants';
 
 

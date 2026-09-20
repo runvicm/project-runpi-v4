@@ -1,4 +1,4 @@
-import { AppShell, Box, Container, Group } from '@mantine/core'
+import { AppShell, Box } from '@mantine/core'
 import { env } from 'cloudflare:workers';
 import { Outlet } from 'react-router'
 import Footer from '~/components/Footer'

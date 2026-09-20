@@ -1,6 +1,7 @@
 import { Anchor, Badge, Box, Card, Center, Container, Flex, Group, Paper, SimpleGrid, Skeleton, Stack, Text, Title } from '@mantine/core'
 import { IconArrowRight, IconCalendarEvent, IconEye, IconPlugOff } from '@tabler/icons-react';
-import { Await, useFetcher, useLoaderData } from 'react-router';
+import { Await, useLoaderData } from 'react-router';
+import { getTagColor } from '~/utils/getTagColor';
 
 export default function Devlog() {
   const { devlogs } = useLoaderData<{devlogs: DevLogProps[]}>();
@@ -62,11 +63,6 @@ export default function Devlog() {
   )
 }
 
-
-
-
-
-
 /**
  * TO DO: seperate this later as app evolve
  */
@@ -92,8 +88,6 @@ export interface DevLogProps {
  * @returns 
  */
 function DevlogCard({ log }: { log: DevLogProps }) {
-  const fetcher = useFetcher();
-
   return (
     <Card 
       radius="md" 
@@ -118,12 +112,12 @@ function DevlogCard({ log }: { log: DevLogProps }) {
         </Group>
         
         <Group gap={6}>
-          {log.tags.map((tag, tagIndex) => {
-            const colorClass = getTagColor(tagIndex);
+          {log.tags.map((tag) => {
             return (
               <Badge 
                 key={tag.slug} 
-                color={colorClass}
+                color={getTagColor(tag.slug)}
+                variant='outline'
                 radius="sm" 
                 size="sm"
                 style={{ textTransform: 'lowercase' }}
@@ -145,7 +139,7 @@ function DevlogCard({ log }: { log: DevLogProps }) {
         c="gray.5" 
         mt="sm" 
         lh={1.6} 
-        lineClamp={3} // Prevents text from pushing the card too tall
+        lineClamp={3}
       >
         {log.overview}
       </Text>
@@ -172,20 +166,6 @@ function DevlogCard({ log }: { log: DevLogProps }) {
   )
 }
 
-
-const TAG_COLOR = [
-  'blue',
-  'orange',
-  'green',
-  'pink',
-  'teal',
-  'red',
-  'yellow',
-] as const;
-
-function getTagColor(index: number) {
-  return TAG_COLOR[index % TAG_COLOR.length];
-} 
 
 function SkeletonCard() {
     return (
