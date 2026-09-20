@@ -40,7 +40,7 @@ export default function Footer() {
               {SOCIAL_LINKS.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <ActionIcon key={social.id} component="a" href="#" size="lg" radius="xl" color="teal" variant="light">
+                  <ActionIcon key={social.id} component="a" href={social.href} size="lg" radius="xl" color="teal" variant="light">
                     <Icon size={20} stroke={1.5} />
                   </ActionIcon>
                 )
