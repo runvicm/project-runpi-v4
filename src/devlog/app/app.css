@@ -31,20 +31,20 @@
   Global color override
 */
 :root[data-mantine-color-scheme='light'] {
-  --mantine-color-body: var(--bg); 
+  --mantine-color-body: var(--bg);
   --mantine-color-text: var(--text);
-  
+
 }
 
 :root[data-mantine-color-scheme='dark'] {
-  --mantine-color-body: var(--bg); 
+  --mantine-color-body: var(--bg);
   --mantine-color-text: var(--text);
 
   ::selection {
     background: var(--accent-dim);
     color: #fff;
   }
-  
+
+  ;
+
 }
-
-

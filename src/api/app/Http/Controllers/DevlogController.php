@@ -111,4 +111,8 @@ class DevlogController extends Controller
         $log  = DevlogEntry::where('slug', $slug)->firstOrFail();
         $log->increment('view_count');
     }
+
+
+
+    public function test() {}
 }
