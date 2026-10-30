@@ -5,7 +5,7 @@ import { createMeta } from '~/utils/seo';
 
 export function meta() {
   return createMeta({
-    title: `${SITE_CONFIG.title} - Abaout`,
+    title: `${SITE_CONFIG.title} - About`,
     description: `${OG_DESCRIPTION}`,
     type: "website"
   });
