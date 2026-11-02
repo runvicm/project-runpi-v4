@@ -17,7 +17,7 @@ export default function Status() {
       <Await
         resolve={message}
         errorElement={
-          <Text className={classes.text}>API DOWN</Text>
+          <Text className={classes.text}>Server taking a break: Offline Nov 12 – Nov 16 (GMT+8)</Text>
         }
         children={(message) => (
           <Text className={classes.text}>{message}</Text>

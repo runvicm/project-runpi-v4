@@ -20,7 +20,6 @@ export function meta() {
  */
 export function loader() {
   const API_URL = env.API_URL;
-  const API_KEY = env.API_KEY;
 
   const devlogs = fetch(`${API_URL}/api/homepage/devlog`)
     .then((res) => res.json());

@@ -35,7 +35,7 @@ export default function Devlog() {
                     radius="xl"
                     leftSection={<IconPlugOff size={14} />}
                   >
-                    Service temporarily unavailable
+                    Server offline: Nov 12, 00:00 – Nov 16, 23:59 (GMT+8)
                   </Badge>
                 </Center>
              
