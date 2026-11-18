@@ -43,13 +43,13 @@ export const PROJECTS = [
     repoUrl: 'https://github.com/runvicm/project-runpi-v4'
   },
   {
-    hostname: 'minecraft',
-    image: '/assets/project/minecraft.png',
-    title: 'Minecradt Server',
+    hostname: 'ro3-web',
+    image: '/assets/project/ro3.png',
+    title: 'Ragnarok 3 Panel',
     status: 'live',
-    description: "Info Page and updates for my self-hosted Minecraft server",
-    stacks: ['Laravel', 'nextJS', 'TailwindCSS', 'CSS'],
-    url: 'https://devlog.projectrunpi.com',
+    description: "Ragnarok Online 3 self hosted private server",
+    stacks: ['RO3Emu', 'RO3Launcher'],
+    url: 'https://ro3-web.projectrunpi.com',
     repoUrl: 'https://github.com/runvicm/project-runpi-v4'
   },
   {
