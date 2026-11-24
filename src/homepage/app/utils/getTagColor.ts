@@ -1,8 +1,23 @@
 const PALETTES = [
-  '#E3A857', '#C792EA', '#7C9EFF', '#E2685E', '#5FBF88',
-  '#4ECDC4', '#F08FC0', '#82C3EC', '#F4A261', '#A78BFA',
-  '#6EE7B7', '#FBBF6E', '#F87171', '#93C5FD',
+  '#173BA1', // Royal Blue
+  '#672791', // Deep Purple
+  '#1E7350', // Forest Green
+  '#946524', // Warm Ochre
+  '#97205C', // Magenta / Berry
+  '#1F6E8C', // Ocean Teal
+  '#A05418', // Burnt Orange
+  '#922E26', // Crimson
+  '#3A17A1', // Indigo
 ];
+
+
+const TAG_OVERRIDES: Record<string, string> = {
+  'CLOUDFLARE TUNNEL': '#1E7350', // Forest Green
+  'PODMAN': '#946524',            // Warm Ochre
+  'RO3EMU': '#922E26',            // Crimson
+  'RO3LAUNCHER': '#97205C',       // Magenta / Berry
+};
+
 
 function hashTag(tag: string): number {
   let hash = 0;
@@ -14,5 +29,6 @@ function hashTag(tag: string): number {
 }
 
 export function getTagColor(tag: string): string {
-  return PALETTES[hashTag(tag) % PALETTES.length];
+  const normalized = tag.trim().toUpperCase();
+  return TAG_OVERRIDES[normalized] ?? PALETTES[hashTag(normalized) % PALETTES.length];
 }

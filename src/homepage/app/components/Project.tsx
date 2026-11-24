@@ -1,6 +1,7 @@
 import { ActionIcon, Badge, Box, Button, Card, Container, Flex, Group, Image, Paper, Stack, Text, Title } from '@mantine/core'
 import { IconBrandGithub, IconExternalLink, IconLock } from '@tabler/icons-react'
 import { PROJECTS } from '~/constants'
+import { getTagColor } from '~/utils/getTagColor';
 
 
 const BADGES = [
@@ -138,7 +139,7 @@ export default function Project() {
                 {/* Tech Stack Tags */}
                 <Group gap="xs" mb="md" mt="auto">
                   {project.stacks.map((stack, i) => (
-                    <Badge key={i} size="xs" variant="outline" color="gray" radius="sm">
+                    <Badge key={i} size="xs" variant="outline" color={getTagColor(stack)} radius="sm">
                       {stack}
                     </Badge>
                   ))}
@@ -156,16 +157,20 @@ export default function Project() {
                   >
                     {isLive ? "View Project" : "Under Development"}
                   </Button>
-                  <ActionIcon 
-                    variant="default" 
-                    size={36} 
-                    radius="md"
-                    aria-label="GitHub Repository"
-                    component="a"
-                    href=""
-                  >
+
+                  {isLive && (
+
+                    <ActionIcon 
+                      variant="default" 
+                      size={36} 
+                      radius="md"
+                      aria-label="GitHub Repository"
+                      component="a"
+                      href={project.repoUrl}
+                    >
                     <IconBrandGithub size={20} stroke={1.5} color="var(--mantine-color-gray-7)" />
                   </ActionIcon>
+                  )}
                 </Group>
               </Card>
             );

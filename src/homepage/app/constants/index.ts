@@ -37,20 +37,20 @@ export const PROJECTS = [
     image: '/assets/project/devlog.png',
     title: 'Developer Log',
     status: 'live',
-    description: 'A dev blog where I share progress, updates, and lessons along the way.',
-    stacks: ['Laravel', 'React Router 7', 'DaisyUI'],
+    description: 'Engineering log tracking my self-hosted infrastructure, full-stack builds, and deployment notes across Project RunPi.',
+    stacks: ['Laravel', 'React Router 7', 'Mantine', 'Podman'],
     url: 'https://devlog.projectrunpi.com',
     repoUrl: 'https://github.com/runvicm/project-runpi-v4'
   },
   {
     hostname: 'ro3-web',
     image: '/assets/project/ro3.png',
-    title: 'Ragnarok 3 Panel',
+    title: 'RPiRO3 — RO3Emu Server',
     status: 'live',
-    description: "Ragnarok Online 3 self hosted private server",
-    stacks: ['RO3Emu', 'RO3Launcher'],
+    description: 'Self-hosted Ragnarok Online 3 private server compiled natively for ARM64, isolated with rootless Podman, and exposed via Cloudflare Tunnel.',
+    stacks: ['RO3Emu', 'RO3Launcher', 'Podman', 'Cloudflare Tunnel'],
     url: 'https://ro3-web.projectrunpi.com',
-    repoUrl: 'https://github.com/runvicm/project-runpi-v4'
+    repoUrl: 'https://github.com/runvicm/rpi-ro3-stacks'
   },
   {
     hostname: 'events',
@@ -59,8 +59,8 @@ export const PROJECTS = [
     status: 'development',
     description: 'An event calendar focused on local anime and cosplay meetups.',
     stacks: [],
-    url: 'https://devlog.projectrunpi.com',
-    repoUrl: 'https://github.com/yourhandle/devlog'
+    url: '',
+    repoUrl: ''
   },
 ];
 

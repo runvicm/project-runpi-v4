@@ -30,7 +30,6 @@ This project uses a monorepo layout to manage multiple client-facing application
 │   ├── api/            # Laravel API Backend
 │   ├── homepage/       # Homepage (React Router V8 & Mantine)
 │   ├── devlog/         # Development Log (to be decided)
-│   ├── minecraft/      # Server Info (To be decided)
 │   └── events/         # PH Anime, Cosplay and related events (To be Decided)
 └── README.md
 ```
@@ -41,6 +40,7 @@ Currently migrating the remaining frontend routes to V4, building on the **[live
 
 *   [x] Set up initial monorepo scaffolding
 *   [x] **Home Page** - *Deployed*
+*   [x] **Developemnt Log** - *Deployed*
 *   [ ] **Development** - *In progress - refining UX/UI*
 
 ---
