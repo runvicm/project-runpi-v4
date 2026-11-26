@@ -1,0 +1,54 @@
+@import "tailwindcss" source(".");
+
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "eventlist";
+  default: true; /* set as default */
+  prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
+  color-scheme: light; /* color of browser-provided UI */
+  themecontroller: true; /* set to false to skip the theme-controller selector */
+
+  --color-base-100: oklch(0.99 0.03 100);
+  --color-base-200: oklch(0.96 0.04 100);
+  --color-base-300: oklch(0.92 0.05 100);
+  --color-base-content: oklch(0.18 0 0);
+  --color-primary: oklch(0.88 0.18 98);
+  --color-primary-content: oklch(0.18 0 0);
+  --color-secondary: oklch(0.80 0.12 5);
+  --color-secondary-content: oklch(0.18 0 0);
+  --color-accent: oklch(0.83 0.11 225);
+  --color-accent-content: oklch(0.18 0 0);
+  --color-neutral: oklch(0.18 0 0);
+  --color-neutral-content: oklch(0.99 0.03 100);
+  --color-info: oklch(0.83 0.11 225);
+  --color-info-content: oklch(0.18 0 0);
+  --color-success: oklch(0.8 0.17 150);
+  --color-success-content: oklch(0.18 0 0);
+  --color-warning: oklch(0.88 0.18 98);
+  --color-warning-content: oklch(0.18 0 0);
+  --color-error: oklch(0.63 0.23 17);
+  --color-error-content: oklch(0.99 0 0);
+
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* border size */
+  --border: 2px;
+
+  /* effects */
+  --depth: 0;
+  --noise: 0;
+}
+
+.page:has(#f-cosplay:checked) .ev:not([data-type="cosplay"]) { display: none; }
+.page:has(#f-cosplay:checked) .year:not(:has([data-type="cosplay"])) { display: none; }
+.page:has(#f-meetup:checked) .ev:not([data-type="meetup"]) { display: none; }
+.page:has(#f-meetup:checked) .year:not(:has([data-type="meetup"])) { display: none; }
+.page:has(#f-convention:checked) .ev:not([data-type="convention"]) { display: none; }
+.page:has(#f-convention:checked) .year:not(:has([data-type="convention"])) { display: none; }
