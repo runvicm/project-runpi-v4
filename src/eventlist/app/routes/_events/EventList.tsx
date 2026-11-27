@@ -1,21 +1,46 @@
 import { Link } from "react-router";
 import { EVENTS } from "./EVENTS";
-import { Countdown, getCountdown } from "./hook/Countdown";
+import { Countdown, DayAndWeekday, getCountdown } from "./EventDate";
 import { IconCalendarEvent, IconChevronRight, IconClock, IconMapPin } from "@tabler/icons-react";
 import { TagColor } from "./TagColor";
 
-export default function EventList() {
+
+export default function EventList({ selectedTag }: { selectedTag?: string | null }) {
   return (
     <>
-    {EVENTS.map((year) => (
-      <section key={year.year} id={`y${year.year}`} className="year mb-12 scroll-mt-4">
-        <h2 className="mb-2 text-3xl font-semibold tracking-tight">{year.year}</h2>
+    {EVENTS
+  .filter(
+    (year) =>
+      !selectedTag ||
+      year.months.some((month) =>
+        month.events.some((event) => event.tags.includes(selectedTag))
+      )
+  )
+  .map((year) => (
+    <section key={year.year} id={`y${year.year}`} className="year mb-12 scroll-mt-4">
+      <h2 className="mb-2 text-3xl font-semibold tracking-tight">{year.year}</h2>
 
-        {year.months.map((month) => (
-          <div className="month">
+      {year.months
+        .filter(
+          (month) =>
+            !selectedTag ||
+            month.events.some((event) => event.tags.includes(selectedTag))
+        )
+        .map((month) => (
+          <div key={month.month} className="month">
             <h3 className="mt-5 mb-1 text-xs font-semibold uppercase tracking-widest text-(--color-primary)">{month.month}</h3>
-          
-            {month.events.map(event => (
+
+            {month.events
+              .filter(
+                (event) => !selectedTag || event.tags.includes(selectedTag)
+              )
+              .map((event) => {
+              
+              const { day, weekday } = DayAndWeekday(event.start, event.end);
+
+              return (
+
+             
               <Link
                   key={event.slug}
                   to={`/events/${event.slug}`}
@@ -23,15 +48,20 @@ export default function EventList() {
                 >
                
                 <div className="min-w-0 flex-1">
-                  <div className="flex-1">
+           
+                   
+                    
+                    
                     <div className="flex gap-1 mb-1">
                       <IconCalendarEvent size={20}/>
-                      <span className="whitespace-nowrap text-xl font-medium leading-none">{event.day}</span>
-                      <span className="mt-1 whitespace-nowrap text-xs text-neutral-500 flex-1">{event.weekday}</span>
-                      <Countdown start={event.start} end={event.end} />
+                      <span className="whitespace-nowrap text-xl font-medium leading-none">{day}</span>
+                      <span className="mt-1 whitespace-nowrap text-xs text-neutral-500 flex-1">{weekday}</span>
+                     <Countdown start={event.start} end={event.end} />
                     </div>
+                
+
+
                     <h4 className="text-base font-semibold leading-snug">{event.name}</h4>
-                  </div>
                   <p className="mt-1 flex items-center gap-2 text-sm text-neutral-500"><IconMapPin size={16} /><span className="min-w-0">{event.venue}</span></p>
                   <p className="flex items-center gap-2 text-sm text-neutral-500"><IconClock size={16}/>{event.time}  </p>
                   <p className="mt-2 flex flex-wrap items-center gap-1.5">
@@ -55,7 +85,7 @@ export default function EventList() {
                 </div>
                <IconChevronRight size={20} />
               </Link>
-            ))}
+             )})}
           </div>
         ))}
 

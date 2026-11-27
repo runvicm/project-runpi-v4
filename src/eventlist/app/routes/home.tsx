@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Route } from "./+types/home";
 import EventCard from "./_events/EventCard";
 import EventList from "./_events/EventList";
@@ -11,6 +12,14 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+
+const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
+  const ALL_YEARS = [
+    ...new Set(
+      (EVENTS ?? []).flatMap((year) => year.year ?? [])
+    )
+  ];
 
   const ALL_TAGS = [
   ...new Set(
@@ -35,22 +44,24 @@ export default function Home() {
           <h1 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">Every meetup, year by year.</h1>
   
           <nav className="flex flex-wrap gap-2" aria-label="Years">
-            <a className="btn btn-sm btn-outline rounded-full" href="#y2026">2026</a>
-            <a className="btn btn-sm btn-outline rounded-full" href="#y2027">2027</a>
+            {ALL_YEARS.map((year) => (
+
+            <a key={year} className="btn btn-sm btn-outline rounded-full" href={`#y${year}`}>{year}</a>
+            ))}
+      
           </nav>
   
           <form className="filter" aria-label="Filter by type">
-          <input className="btn btn-sm btn-square rounded-full filter-reset" type="reset" value="×" aria-label="Show all" />
+          <input className="btn btn-sm btn-square rounded-full filter-reset" type="reset" value="×" aria-label="Show all" onClick={() => setSelectedTag(null)} />
             {ALL_TAGS.map((tag) => (
-              <input key={tag} className="btn btn-sm rounded-full" type="radio" name="filter" id={`f-${tag}`} aria-label={tag} />
+              <input key={tag} className="btn btn-sm rounded-full" type="radio" name="filter" id={`f-${tag}`} aria-label={tag}
+      checked={selectedTag === tag}
+      onChange={() => setSelectedTag(tag)}/>
             ))}
-
-
           </form>
         </section>
-  
 
-        <EventList />
+        <EventList selectedTag={selectedTag} />
   
       </main>
     </div>

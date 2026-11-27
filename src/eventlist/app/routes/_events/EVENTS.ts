@@ -9,7 +9,7 @@ export const EVENTS = [
             slug: "anime-event-name-2026",
             name: "Anime Event Name 2026",
             day: "27", weekday: "Sun",
-            start: "2026-11-27", end: "2026-11-27",   // for the countdown
+            start: "2026-11-28", end: "2026-11-29",   // for the countdown
             time: "11am – 8pm",
             venue: "SMX Convention Center, Pasay City",
             tags: ["cosplay", "booths", "stage"],
@@ -24,9 +24,9 @@ export const EVENTS = [
           },
           {
             slug: "event-3",
-            name: "[Event name]",
+            name: "Event that monsth and year",
             day: "18–20", weekday: "Fri–Sun",
-            start: "2026-12-18", end: "2026-12-20",
+            start: "2026-12-30", end: "2027-01-03",
             time: "[Time]", venue: "[Venue], [City]",
             tags: ["cosplay", "booths", "food", "guests"],
           },
@@ -44,7 +44,7 @@ export const EVENTS = [
             slug: "event-4",
             name: "[Event name]",
             day: "17", weekday: "Sun",
-            start: "2027-01-17", end: "2027-01-17",
+            start: "2027-01-30", end: "2027-02-4",
             time: "[Time]", venue: "[Venue], [City]",
             tags: ["meetup", "anime"],
           },
