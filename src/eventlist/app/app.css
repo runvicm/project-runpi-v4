@@ -8,25 +8,25 @@
   color-scheme: light; /* color of browser-provided UI */
   themecontroller: true; /* set to false to skip the theme-controller selector */
 
-  --color-base-100: oklch(0.99 0.03 100);
-  --color-base-200: oklch(0.96 0.04 100);
-  --color-base-300: oklch(0.92 0.05 100);
-  --color-base-content: oklch(0.18 0 0);
-  --color-primary: oklch(0.88 0.18 98);
-  --color-primary-content: oklch(0.18 0 0);
-  --color-secondary: oklch(0.80 0.12 5);
-  --color-secondary-content: oklch(0.18 0 0);
-  --color-accent: oklch(0.83 0.11 225);
-  --color-accent-content: oklch(0.18 0 0);
-  --color-neutral: oklch(0.18 0 0);
-  --color-neutral-content: oklch(0.99 0.03 100);
-  --color-info: oklch(0.83 0.11 225);
-  --color-info-content: oklch(0.18 0 0);
-  --color-success: oklch(0.8 0.17 150);
-  --color-success-content: oklch(0.18 0 0);
-  --color-warning: oklch(0.88 0.18 98);
-  --color-warning-content: oklch(0.18 0 0);
-  --color-error: oklch(0.63 0.23 17);
+  --color-base-100: oklch(0.985 0 0);
+  --color-base-200: oklch(0.97 0 0);
+  --color-base-300: oklch(0.922 0 0);
+  --color-base-content: oklch(0.205 0 0);
+  --color-primary: oklch(0.57 0.23 15);
+  --color-primary-content: oklch(0.99 0 0);
+  --color-secondary: oklch(0.556 0 0);
+  --color-secondary-content: oklch(0.99 0 0);
+  --color-accent: oklch(0.57 0.23 15);
+  --color-accent-content: oklch(0.99 0 0);
+  --color-neutral: oklch(0.205 0 0);
+  --color-neutral-content: oklch(0.985 0 0);
+  --color-info: oklch(0.6 0.12 240);
+  --color-info-content: oklch(0.99 0 0);
+  --color-success: oklch(0.6 0.15 150);
+  --color-success-content: oklch(0.99 0 0);
+  --color-warning: oklch(0.8 0.15 85);
+  --color-warning-content: oklch(0.2 0 0);
+  --color-error: oklch(0.58 0.2 25);
   --color-error-content: oklch(0.99 0 0);
 
   /* border radius */
@@ -39,16 +39,40 @@
   --size-field: 0.25rem;
 
   /* border size */
-  --border: 2px;
+  --border: 1px;
 
   /* effects */
   --depth: 0;
   --noise: 0;
 }
 
-.page:has(#f-cosplay:checked) .ev:not([data-type="cosplay"]) { display: none; }
-.page:has(#f-cosplay:checked) .year:not(:has([data-type="cosplay"])) { display: none; }
-.page:has(#f-meetup:checked) .ev:not([data-type="meetup"]) { display: none; }
-.page:has(#f-meetup:checked) .year:not(:has([data-type="meetup"])) { display: none; }
-.page:has(#f-convention:checked) .ev:not([data-type="convention"]) { display: none; }
-.page:has(#f-convention:checked) .year:not(:has([data-type="convention"])) { display: none; }
+body { font-family: Inter, system-ui, sans-serif; }
+
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: oklch(0.48 0.15 var(--h, 0));
+  background: oklch(0.95 0.03 var(--h, 0));
+}
+ 
+/* Event happening today / right now */
+.ev.live {
+  border-bottom-color: transparent; 
+  margin-inline: -0.75rem;
+  padding-inline: 0.75rem;
+  border-radius: var(--radius-box);
+  background: color-mix(in oklch, var(--color-primary) 10%, transparent);
+}
+.countdown.is-live {
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+  font-weight: 500;
+}
